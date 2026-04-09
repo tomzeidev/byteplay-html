@@ -56,6 +56,7 @@ img {
 }
 
 .section-label {
+  text-align: center;
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
@@ -72,12 +73,14 @@ img {
   color: #111;
   margin-bottom: 0.4rem;
   line-height: 1.1;
+  text-align: center;
 }
 
 .section-sub {
   font-size: 1rem;
   color: var(--muted);
   margin-bottom: 2.8rem;
+  text-align: center;
 }
 
 /* ---------------------------------------------------------
