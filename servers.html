@@ -3,64 +3,963 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nova Networks - Servers</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+  <meta property="og:title" content="Servers — BYTE Play">
+  <meta property="og:description" content="Explore every server BYTE Play has built. From Fertilia's farming RPG to the vault of retired favourites.">
+  <meta property="og:image" content="/img/og-banner.png">
+  <meta property="og:url" content="https://byteplay.xyz/servers">
+  <title>Servers — BYTE Play</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ── Canvas ───────────────────────────────────── */
+    :root {
+      --fertilia-green:  #4ade80;
+      --fertilia-dark:   #0a1a0f;
+      --cab-purple:      #a78bfa;
+      --cab-dark:        #0f0a1e;
+      --tk-orange:       #fb923c;
+      --tk-dark:         #1a0e05;
+      --border:          rgba(255,255,255,0.07);
+      --text:            rgba(255,255,255,0.88);
+      --muted:           rgba(255,255,255,0.42);
+    }
+
+    body { background: #090e14; color: var(--text); }
+
+    /* ── Page hero ───────────────────────────────── */
+    .sv-hero {
+      padding: 5rem 6vw 4rem;
+      background: #090e14;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .sv-hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .sv-hero-title {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .sv-hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-top: 0.4rem;
+    }
+
+    /* Server count pills */
+    .sv-status-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .sv-status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .sv-status-pill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .pill-live   { color: #4ade80; border-color: rgba(74,222,128,0.35); background: rgba(74,222,128,0.08); }
+    .pill-live .sv-status-pill-dot { background: #4ade80; animation: pulse-dot 2s infinite; }
+    .pill-dev    { color: #fb923c; border-color: rgba(251,146,60,0.35);  background: rgba(251,146,60,0.08); }
+    .pill-dev .sv-status-pill-dot  { background: #fb923c; }
+    .pill-arch   { color: #a78bfa; border-color: rgba(167,139,250,0.35); background: rgba(167,139,250,0.08); }
+    .pill-arch .sv-status-pill-dot { background: #a78bfa; }
+
+    /* ═══════════════════════════════════════════════
+       FERTILIA — full-width feature section
+    ═══════════════════════════════════════════════ */
+    .sv-fertilia {
+      background: var(--fertilia-dark);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    /* Top bar */
+    .sv-fertilia-topbar {
+      padding: 2rem 6vw 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .sv-server-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Main layout: two columns */
+    .sv-fertilia-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      align-items: start;
+      padding: 3rem 6vw 4rem;
+    }
+
+    .sv-fertilia-left { padding-right: 4rem; }
+
+    .sv-f-name {
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 900;
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 1.4rem;
+    }
+
+    .sv-f-name span {
+      color: var(--fertilia-green);
+    }
+
+    .sv-f-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.8rem;
+      max-width: 420px;
+    }
+
+    /* IP block */
+    .sv-ip-block {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(74,222,128,0.25);
+      margin-bottom: 2rem;
+    }
+
+    .sv-ip-text {
+      background: rgba(74,222,128,0.07);
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 10px 18px;
+      letter-spacing: 0.04em;
+    }
+
+    .sv-ip-copy {
+      background: var(--fertilia-green);
+      color: #0a1a0f;
+      border: none;
+      padding: 10px 18px;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .sv-ip-copy:hover { background: #86efac; }
+
+    .sv-ip-feedback {
+      font-size: 0.78rem;
+      color: var(--fertilia-green);
+      margin-top: 6px;
+      min-height: 1em;
+    }
+
+    /* Action links */
+    .sv-f-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sv-btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--fertilia-green);
+      color: #0a1a0f;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 11px 22px;
+      border-radius: 999px;
+      transition: background 0.2s, transform 0.2s;
+      text-decoration: none;
+    }
+
+    .sv-btn-primary:hover { background: #86efac; transform: translateY(-2px); color: #0a1a0f; }
+
+    .sv-btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 11px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      transition: border-color 0.2s, color 0.2s;
+      text-decoration: none;
+    }
+
+    .sv-btn-ghost:hover { border-color: rgba(255,255,255,0.35); color: #fff; }
+
+    /* Right column — bento feature grid */
+    .sv-fertilia-right { padding-top: 0.5rem; }
+
+    .sv-bento {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 10px;
+    }
+
+    .sv-bento-tile {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(74,222,128,0.1);
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .sv-bento-tile:hover {
+      background: rgba(74,222,128,0.06);
+      border-color: rgba(74,222,128,0.25);
+    }
+
+    /* First tile spans both columns */
+    .sv-bento-tile.wide { grid-column: 1 / -1; }
+
+    .sv-tile-icon { font-size: 1.3rem; margin-bottom: 8px; display: block; line-height: 1; }
+    .sv-tile-title { font-size: 0.88rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+    .sv-tile-desc  { font-size: 0.78rem; color: var(--muted); line-height: 1.55; }
+
+    /* Season / update footer strip */
+    .sv-fertilia-footer {
+      border-top: 1px solid rgba(74,222,128,0.1);
+      padding: 1rem 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .sv-fertilia-footer-stat {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .sv-footer-num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--fertilia-green);
+      letter-spacing: -0.02em;
+    }
+
+    .sv-footer-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ═══════════════════════════════════════════════
+       COLLECT ALL BLOCKS — retrospective / hall of fame
+    ═══════════════════════════════════════════════ */
+    .sv-cab {
+      background: var(--cab-dark);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .sv-cab-topbar {
+      padding: 2rem 6vw 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .sv-cab-inner {
+      padding: 3rem 6vw 0;
+    }
+
+    /* Diagonal ruled banner */
+    .sv-cab-banner {
+      border: 1px solid rgba(167,139,250,0.2);
+      background: rgba(167,139,250,0.04);
+      border-radius: 14px;
+      padding: 1rem 1.8rem;
+      margin-bottom: 2.4rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .sv-cab-banner-icon { font-size: 1.2rem; }
+
+    .sv-cab-banner p {
+      font-size: 0.88rem;
+      color: rgba(167,139,250,0.85);
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .sv-cab-banner strong { color: #c4b5fd; }
+
+    /* Main layout */
+    .sv-cab-body {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 5rem;
+      align-items: start;
+      padding-bottom: 4rem;
+    }
+
+    .sv-cab-left img {
+      width: 60%;
+      filter: saturate(0.7) brightness(0.9);
+      margin: 0;
+      transition: filter 0.3s;
+    }
+
+    .sv-cab-left img:hover { filter: saturate(1) brightness(1); }
+
+    .sv-c-name {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .sv-c-name span { color: var(--cab-purple); }
+
+    .sv-c-era {
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cab-purple);
+      margin-bottom: 1.4rem;
+    }
+
+    .sv-c-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    /* Achievement stat row */
+    .sv-c-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(167,139,250,0.15);
+      border: 1px solid rgba(167,139,250,0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1.8rem;
+    }
+
+    .sv-c-stat {
+      background: rgba(15,10,30,0.8);
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .sv-c-stat-num   { font-size: 1.8rem; font-weight: 800; color: var(--cab-purple); display: block; letter-spacing: -0.02em; }
+    .sv-c-stat-label { font-size: 0.72rem; color: var(--muted); font-weight: 600; display: block; margin-top: 3px; }
+
+    /* Feature list */
+    .sv-c-features {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .sv-c-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .sv-c-features li::before {
+      content: '▸';
+      color: var(--cab-purple);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       TIMEKITS — teaser / coming soon
+    ═══════════════════════════════════════════════ */
+    .sv-tk {
+      background: var(--tk-dark);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Animated noise grain overlay */
+    .sv-tk::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    /* Orange radial glow */
+    .sv-tk::after {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(251,146,60,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .sv-tk-topbar {
+      padding: 2rem 6vw 0;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .sv-tk-body {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding: 3rem 6vw 4.5rem;
+    }
+
+    .sv-tk-name {
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 1.4rem;
+    }
+
+    .sv-tk-name span { color: var(--tk-orange); }
+
+    .sv-tk-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 400px;
+    }
+
+    /* Redacted spec rows */
+    .sv-tk-specs {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid rgba(251,146,60,0.15);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .sv-tk-spec-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.4rem;
+      border-bottom: 1px solid rgba(251,146,60,0.08);
+      background: rgba(255,255,255,0.02);
+    }
+
+    .sv-tk-spec-row:last-child { border-bottom: none; }
+
+    .sv-tk-spec-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--tk-orange);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .sv-tk-spec-value {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+    }
+
+    /* Redacted value */
+    .sv-tk-spec-redacted {
+      display: inline-block;
+      background: rgba(251,146,60,0.15);
+      border-radius: 4px;
+      padding: 2px 24px;
+      color: transparent;
+      user-select: none;
+      font-size: 0.88rem;
+      filter: blur(4px);
+    }
+
+    /* Right side: image with overlay teaser card */
+    .sv-tk-right {
+      position: relative;
+    }
+
+    .sv-tk-img-wrap {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(251,146,60,0.15);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 260px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sv-tk-img-wrap img {
+      width: 50%;
+      filter: brightness(0.7) saturate(0.8);
+      transition: filter 0.3s;
+    }
+
+    .sv-tk-img-wrap:hover img { filter: brightness(0.9) saturate(1); }
+
+    /* Countdown-style "in development" overlay */
+    .sv-tk-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26,14,5,0.55);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      border-radius: 16px;
+    }
+
+    .sv-tk-overlay-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tk-orange);
+    }
+
+    .sv-tk-overlay-text {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .sv-tk-notify {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid rgba(251,146,60,0.3);
+      color: var(--tk-orange);
+      background: rgba(251,146,60,0.07);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 10px 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .sv-tk-notify:hover {
+      background: rgba(251,146,60,0.15);
+      border-color: rgba(251,146,60,0.5);
+      color: var(--tk-orange);
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .sv-fertilia-body,
+      .sv-cab-body,
+      .sv-tk-body {
+        grid-template-columns: 1fr;
+        gap: 2.4rem;
+      }
+
+      .sv-fertilia-left { padding-right: 0; }
+      .sv-cab-left { text-align: center; }
+      .sv-cab-left img { width: 40%; margin: 0 auto 1.6rem; }
+      .sv-c-name { text-align: center; }
+      .sv-c-era  { text-align: center; }
+      .sv-c-desc { text-align: center; }
+      .sv-bento  { grid-template-columns: 1fr 1fr; }
+
+      .sv-f-name  { font-size: 4rem; }
+    }
+
+    @media (max-width: 600px) {
+      .sv-hero { padding: 3.5rem 1.4rem 2.5rem; }
+      .sv-fertilia-topbar,
+      .sv-cab-topbar,
+      .sv-tk-topbar { padding: 1.5rem 1.4rem 0; }
+      .sv-fertilia-body,
+      .sv-cab-body,
+      .sv-tk-body { padding: 2rem 1.4rem 3rem; }
+      .sv-fertilia-footer { padding: 1rem 1.4rem; }
+      .sv-bento  { grid-template-columns: 1fr; }
+      .sv-c-stats { grid-template-columns: 1fr 1fr 1fr; }
+      .sv-tk-body { gap: 2rem; }
+      .sv-ip-block { flex-direction: column; border-radius: 10px; }
+      .sv-ip-text  { width: 100%; text-align: center; }
+      .sv-ip-copy  { width: 100%; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header class="main-header">
     <div class="logo">
-      <img src="nova-logo.png" alt="Nova Networks Logo">
+      <img src="nova-logo.png" alt="BYTE Play Logo">
     </div>
-    <nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="servers.html" class="active">Servers</a></li>
-        <li><a href="developer-blog.html" >Posts</a></li>
-        <li><a href="baltop.html">DB</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="servers" class="active">Servers</a></li>
+        <li><a href="developer-blog">Posts</a></li>
+        <li><a href="baltop">DB</a></li>
         <li><a href="https://byteplay.tebex.io">Shop</a></li>
       </ul>
     </nav>
   </header>
 
-  <section id="servers" class="servers-section fade-in-on-scroll">
-    <h2>Our Network</h2>
-    <div class="server-grid">
+  <!-- PAGE HERO -->
+  <section class="sv-hero">
+    <span class="sv-hero-label reveal">BYTE Play</span>
+    <h1 class="sv-hero-title reveal">Our Servers</h1>
+    <p class="sv-hero-sub reveal">Every project we've shipped. Live, in development, and the ones we'll never forget.</p>
+    <div class="sv-status-row reveal reveal-delay-1">
+      <span class="sv-status-pill pill-live">
+        <span class="sv-status-pill-dot"></span> 1 Live
+      </span>
+      <span class="sv-status-pill pill-dev">
+        <span class="sv-status-pill-dot"></span> 1 In Development
+      </span>
+      <span class="sv-status-pill pill-arch">
+        <span class="sv-status-pill-dot"></span> 1 Archived
+      </span>
+    </div>
+  </section>
 
-      <div class="server-card">
-        <img src="creative.png" alt="Creative">
-        <h3>Collect All Blocks!</h3>
-        <h6-pink><b>Archived</b></h6-pink><br>
-        <p>Over 100+ rare blocks to collect in this unique box gamemode!</p>
-        <p>Chances ranging from 50% drop chances, to 0.05%!</p>
-        <br><h3>Can you collect them all?</h3>
+  <!-- ═══════════ FERTILIA ═══════════ -->
+  <section class="sv-fertilia">
+    <div class="sv-fertilia-topbar reveal">
+      <span class="sv-server-num">Server 01 / 03</span>
+      <span class="sv-status-pill pill-live">
+        <span class="sv-status-pill-dot"></span> Live Now
+      </span>
+    </div>
+
+    <div class="sv-fertilia-body">
+      <!-- Left -->
+      <div class="sv-fertilia-left reveal">
+        <h2 class="sv-f-name">Ferti<span>lia</span></h2>
+        <p class="sv-f-desc">
+          A farming progression RPG unlike anything else on Minecraft. Grow crops,
+          unlock rebirths, enchant your hoes, fight bosses, and grind the market
+          with hundreds of other players. New content drops constantly.
+        </p>
+
+        <div class="sv-ip-block">
+          <div class="sv-ip-text">fertilia.byteplay.xyz</div>
+          <button class="sv-ip-copy" onclick="copyFertiliaIP()">Copy IP</button>
+        </div>
+        <p class="sv-ip-feedback" id="fertilia-ip-feedback"></p>
+
+        <div class="sv-f-actions">
+          <a href="developer-blog" class="sv-btn-primary">
+            Latest Updates →
+          </a>
+          <a href="https://byteplay.tebex.io" class="sv-btn-ghost">
+            Visit Store
+          </a>
+        </div>
       </div>
-      <div class="server-card">
-        <img src="full%20sized%20hoe.png" alt="Survival">
-        <h3>Fertilia!</h3>
-        <h6-green><b>Out Now!</b></h6-green>
-        <p>Increase Farm Level to get better crops to sell for more cash! Rebirth to unlock better crops and shop with the Travelling Merchant to get boosters!</p>
-        <br><h3>Today is your lucky day?</h3>
+
+      <!-- Right — bento grid -->
+      <div class="sv-fertilia-right reveal reveal-delay-1">
+        <div class="sv-bento">
+
+          <div class="sv-bento-tile wide">
+            <span class="sv-tile-icon">🌾</span>
+            <div class="sv-tile-title">Deep Progression System</div>
+            <div class="sv-tile-desc">Farm Level, Rebirths, and a Travelling Merchant that stocks rare boosters. The more you play, the more you unlock, there's always another milestone to reach.</div>
+          </div>
+
+          <div class="sv-bento-tile">
+            <span class="sv-tile-icon">✨</span>
+            <div class="sv-tile-title">Hoe Enchants</div>
+            <div class="sv-tile-desc">7 unique enchants that reshape your strategy, from Chaotic (5× crops, with risk) to Windgrab (speed burst every 2,000 farms).</div>
+          </div>
+
+          <div class="sv-bento-tile">
+            <span class="sv-tile-icon">⚔️</span>
+            <div class="sv-tile-title">Bosses & PvP</div>
+            <div class="sv-tile-desc">Spawn bosses with crops, fight for drops, and clash with other players on the dedicated PvP Island.</div>
+          </div>
+
+          <div class="sv-bento-tile">
+            <span class="sv-tile-icon">🌦️</span>
+            <div class="sv-tile-title">Dynamic Weather</div>
+            <div class="sv-tile-desc">Clear, Rainy, Stormy, or the rare Gemstorm each condition changes how your crops behave.</div>
+          </div>
+
+          <div class="sv-bento-tile">
+            <span class="sv-tile-icon">🪄</span>
+            <div class="sv-tile-title">Charms & Crates</div>
+            <div class="sv-tile-desc">Equip up to 3 charms for passive buffs. Earn crates, open them, and combine lower tiers into more powerful ones.</div>
+          </div>
+
+          <div class="sv-bento-tile">
+            <span class="sv-tile-icon">🛒</span>
+            <div class="sv-tile-title">Player Marketplace</div>
+            <div class="sv-tile-desc">Live auctions and marketplace listings driven entirely by the playerbase. Buy and sell anything, anytime.</div>
+          </div>
+
+          <div class="sv-bento-tile">
+            <span class="sv-tile-icon">🌴</span>
+            <div class="sv-tile-title">Private Islands</div>
+            <div class="sv-tile-desc">Grow exotic seeds on your own island. Mint, Fig, Bastion Fruit. Upgrade it with charms for accelerated harvests.</div>
+          </div>
+
+        </div>
       </div>
-      <div class="server-card">
-        <img src="red vs blue icon.png" alt="Skyblock">
-        <h3>Red vs Blue</h3>
-        <h6-orange><b>In-Dev</b></h6-orange><br>
-        <p>Battle head-to-head in this round-based server! Team up with friends, level up your kit, and rack up kills to become the MVP!</p>
-        <br><h3>Will you become the MVP?</h3>
+    </div>
+
+    <!-- Footer stats strip -->
+    <div class="sv-fertilia-footer reveal">
+      <div class="sv-fertilia-footer-stat">
+        <span class="sv-footer-num">9+</span>
+        <span class="sv-footer-label">Major Updates</span>
+      </div>
+      <div class="sv-fertilia-footer-stat">
+        <span class="sv-footer-num">24</span>
+        <span class="sv-footer-label">Peak Concurrent Players</span>
+      </div>
+      <div class="sv-fertilia-footer-stat">
+        <span class="sv-footer-num">14,500+</span>
+        <span class="sv-footer-label">Unique Joins</span>
+      </div>
+      <div class="sv-fertilia-footer-stat">
+        <span class="sv-footer-num">Season 3</span>
+        <span class="sv-footer-label">Currently Active</span>
       </div>
     </div>
   </section>
 
+  <!-- ═══════════ COLLECT ALL BLOCKS ═══════════ -->
+  <section class="sv-cab">
+    <div class="sv-cab-topbar reveal">
+      <span class="sv-server-num">Server 02 / 03</span>
+      <span class="sv-status-pill pill-arch">
+        <span class="sv-status-pill-dot"></span> Archived
+      </span>
+    </div>
 
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
+    <div class="sv-cab-inner reveal">
+      <div class="sv-cab-banner">
+        <span class="sv-cab-banner-icon">🏛️</span>
+        <p>This server has been <strong>retired</strong> and is no longer accessible. It lives on here as part of our history.</p>
+      </div>
+    </div>
+
+    <div class="sv-cab-body reveal">
+      <!-- Left: image -->
+      <div class="sv-cab-left" style="padding: 0 0 0 6vw;">
+        <img src="creative.png" alt="Collect All Blocks">
+      </div>
+
+      <!-- Right: content -->
+      <div class="sv-cab-right" style="padding-right: 6vw;">
+        <p class="sv-c-era">Nov 2024 — Jun 2025</p>
+        <h2 class="sv-c-name">Collect<br>All <span>Blocks!</span></h2>
+        <p class="sv-c-desc">
+          A box-opening gamemode where the entire point was to find blocks so rare
+          most players never saw them. With over 100 unique collectibles, teams,
+          team wars, and a player-driven economy built on Recent Auction Prices.
+          It was genuinely unlike anything else we'd built.
+        </p>
+
+        <!-- Stats -->
+        <div class="sv-c-stats">
+          <div class="sv-c-stat">
+            <span class="sv-c-stat-num">100+</span>
+            <span class="sv-c-stat-label">Unique Blocks</span>
+          </div>
+          <div class="sv-c-stat">
+            <span class="sv-c-stat-num">15</span>
+            <span class="sv-c-stat-label">Peak CCU</span>
+          </div>
+          <div class="sv-c-stat">
+            <span class="sv-c-stat-num">4</span>
+            <span class="sv-c-stat-label">Major Updates</span>
+          </div>
+        </div>
+
+        <!-- Feature list -->
+        <ul class="sv-c-features">
+          <li>Drop chances spanning from 50% commons to 0.05% ultra-rares</li>
+          <li>Player teams and Team War mode</li>
+          <li>OmniTool system - one tool to farm all blocks, upgradeable over time</li>
+          <li>Christmas event with Gift mechanics and RAP leaderboards</li>
+          <li>Recent Auction Price (RAP) economy - every block had a community-tracked value</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ TIMEKITS ═══════════ -->
+  <section class="sv-tk">
+    <div class="sv-tk-topbar reveal">
+      <span class="sv-server-num" style="color:rgba(255,255,255,0.3);">Server 03 / 03</span>
+      <span class="sv-status-pill pill-dev">
+        <span class="sv-status-pill-dot"></span> In Development
+      </span>
+    </div>
+
+    <div class="sv-tk-body">
+      <!-- Left -->
+      <div class="reveal">
+        <h2 class="sv-tk-name">Time<span>Kits</span></h2>
+        <p class="sv-tk-desc">
+          RandomKits PvP but every kill buys you more time. Run out of
+          the clock and you're out. It's a standard PvP format twisted into
+          something that rewards aggression and punishes camping.
+        </p>
+
+        <a href="https://discord.gg/a9eG98AweD" target="_blank" class="sv-tk-notify">
+          🔔 &nbsp;Get notified on Discord
+        </a>
+
+        <!-- Redacted spec sheet -->
+        <div class="sv-tk-specs" style="margin-top: 2rem;">
+          <div class="sv-tk-spec-row">
+            <span class="sv-tk-spec-label">Format</span>
+            <span class="sv-tk-spec-value">RandomKits PvP — timed</span>
+          </div>
+          <div class="sv-tk-spec-row">
+            <span class="sv-tk-spec-label">Players</span>
+            <span class="sv-tk-spec-value">Free for all, <span class="sv-tk-spec-redacted">teams TBD</span></span>
+          </div>
+          <div class="sv-tk-spec-row">
+            <span class="sv-tk-spec-label">Map Size</span>
+            <span class="sv-tk-spec-value"><span class="sv-tk-spec-redacted">classified</span></span>
+          </div>
+          <div class="sv-tk-spec-row">
+            <span class="sv-tk-spec-label">Release</span>
+            <span class="sv-tk-spec-value"><span class="sv-tk-spec-redacted">date unknown</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: image with teaser overlay -->
+      <div class="sv-tk-right reveal reveal-delay-1">
+        <div class="sv-tk-img-wrap">
+          <img src="timekits.png" alt="TimeKits">
+          <div class="sv-tk-overlay">
+            <span class="sv-tk-overlay-label">Status</span>
+            <span class="sv-tk-overlay-text">In Development</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', function () {
+      this.classList.toggle('open');
+      document.getElementById('main-nav').classList.toggle('open');
     });
-</script>
+
+    // Fertilia IP copy
+    function copyFertiliaIP() {
+      navigator.clipboard.writeText('fertilia.byteplay.xyz').then(() => {
+        const fb = document.getElementById('fertilia-ip-feedback');
+        fb.textContent = '✓ Copied to clipboard!';
+        setTimeout(() => { fb.textContent = ''; }, 2500);
+      });
+    }
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.08 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Footer
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
+  </script>
+
 </body>
 </html>
