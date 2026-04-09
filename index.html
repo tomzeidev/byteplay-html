@@ -1,112 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
   <meta charset="UTF-8">
   <meta property="og:title" content="BYTE Play">
-  <meta property="og:description" content="At BytePlay, we’re striving to be more than just a studio—we’re builders of bite-sized and expansive Minecraft Servers alike. Our newest server, Fertilia is OUT NOW!">
-  <meta property="og:image" content="/img/favicon.ico">
-  <meta property="og:url" content="https://novamc.net">
+  <meta property="og:description" content="At BytePlay, we're striving to be more than just a studio—we're builders of bite-sized and expansive Minecraft Servers alike. Our newest server, Fertilia is OUT NOW!">
+  <meta property="og:image" content="/img/og-banner.png">
+  <meta property="og:url" content="https://byteplay.xyz">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BYTE Play</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-  <link rel="stylesheet" href="styles.css"/>
-
-  <style>
-    @keyframes fadeSlideUp {
-      0% {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fade-in-on-scroll {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .fade-in-on-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .map-showcase {
-      position: relative;
-      background: url('our-worlds.png') center center / cover no-repeat;
-      height: 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-    }
-
-    .map-overlay {
-      position: absolute;
-      inset: 0;
-      backdrop-filter: blur(6px);
-      background: rgba(0, 0, 0, 0.4);
-    }
-
-    .map-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      color: white;
-      padding: 2rem;
-    }
-
-    .achievements-section {
-      background: #0f0f0f;
-      padding: 4rem 2rem;
-      color: white;
-      text-align: center;
-    }
-
-    .achievement-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .achievement-card {
-      background: #1e1e1e;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 150, 255, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .achievement-card:hover {
-      transform: scale(1.03);
-    }
-
-    .achievement-card h3 {
-      margin-bottom: 1rem;
-      color: #00bfff;
-    }
-
-    .achievement-card p {
-      font-size: 0.95rem;
-      line-height: 1.4;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header class="main-header fade-in-on-scroll">
-    
+  <!-- HEADER -->
+  <header class="main-header">
     <div class="logo">
-      <img src="nova-logo.png" alt="Nova Networks Logo">
+      <img src="nova-logo.png" alt="BYTE Play Logo">
     </div>
-    <nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-nav">
       <ul>
         <li><a href="index" class="active">Home</a></li>
         <li><a href="servers">Servers</a></li>
@@ -117,264 +34,183 @@
     </nav>
   </header>
 
-<!-- FERTILIA REBOOT BANNER -->
-<section class="reboot-banner fade-in-on-scroll">
-  <div class="reboot-overlay"></div>
-  <div class="reboot-content">
-    <h2>Fertilia!</h2>
-    <p>Farm crops, plant seeds, fight bosses and more!</p>
-    <h3 id="reboot-countdown">Loading countdown...</h3>
-    <br><br>
-          <div class="ip">
-        <span id="server-ip-2">fertilia.byteplay.xyz</span><br><br><br>
-        <button onclick="copyServerIP2()" class="cta-button">Copy IP</button>
+  <!-- HERO -->
+  <section class="hero-banner">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-fade"></div>
+    <div class="hero-inner reveal">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span> Out Now
       </div>
-      <p id="copy-message-2" class="copy-message-2"></p>
-  </div>
-</section>
-
-  
-  <!--<section class="product-section fade-in-on-scroll">
-    <div class="product-info">
-      <h6>OUT NOW!</h6>
-      <gradient-text>Fertilia!</gradient-text>
-      <br><br>
-      <h2>Today is your lucky day?</h2><br>
-      <div class="ip">
-        <span id="server-ip">fertilia.byteplay.xyz</span><br><br><br>
-        <button onclick="copyServerIP()" class="cta-button">Copy IP</button>
+      <h1 class="hero-title">
+        Welcome to<br>
+        <span class="hero-title-accent">Fertilia</span>
+      </h1>
+      <p class="hero-sub">
+        Farm crops, plant seeds, fight bosses and more.<br>
+        A progression RPG built inside Minecraft.
+      </p>
+      <div class="countdown-wrap reveal reveal-delay-1">
+        <span class="hero-eyebrow-dot" style="width:8px;height:8px;margin-right:6px;flex-shrink:0;"></span>
+        <span>Fertilia is <strong>live now</strong> — join today</span>
       </div>
-      <p id="copy-message" class="copy-message"></p>
-    </div>
-    <div class="product-image">
-      <img src="hoes%20no%20bg.png" alt="Auto Upgrade Pass">
-    </div>
-  </section>-->
-
- <!-- <section class="hero fade-in-on-scroll">
-    <br><br><br><br>
-    <h1>Uniquely crafted minigames for limitless fun!</h1>
-    <p>We are <b>BYTE Play!</b></p>
-    <a href="#servers" class="cta-button">Explore Servers</a>
-  </section> -->
-  <section class="map-showcase fade-in-on-scroll">
-    <div class="map-overlay"></div>
-    <div class="map-content">
-      <h2>Explore our Worlds</h2>
-      <p>Each and every corner of our maps are built with purpose. Explore a plethora of different features and discover hidden secrets across our worlds.</p>
       <br>
-    </div>
-  </section>
-  <section id="servers" class="servers-section fade-in-on-scroll">
-    <h2>Our Projects</h2>
-    <div class="server-grid">
-
-      <div class="server-card">
-        <img src="creative.png" alt="Creative">
-        <h3>Collect All Blocks!</h3>
-        <h6-pink><b>Archived</b></h6-pink><br>
-        <p>Over 100+ rare blocks to collect in this unique box gamemode!</p>
-        <p>Chances ranging from 50% drop chances, to 0.05%!</p>
-        <br><h3>Can you collect them all?</h3>
+      <div class="ip-block reveal reveal-delay-2">
+        <div class="ip-text">fertilia.byteplay.xyz</div>
+        <button onclick="copyIP()">Copy IP</button>
       </div>
-      <div class="server-card">
-        <img src="full%20sized%20hoe.png" alt="Survival">
-        <h3>Fertilia!</h3>
-        <h6-green><b>Out Now!</b></h6-green>
-        <p>Increase Farm Level to get better crops to sell for more cash! Rebirth to unlock better crops and shop with the Travelling Merchant to get boosters!</p>
-        <br><h3>Today is your lucky day?</h3>
-      </div>
-      <div class="server-card">
-        <img src="timekits.png" alt="Skyblock">
-        <h3>TimeKits</h3>
-        <h6-orange><b>In-Dev</b></h6-orange><br>
-        <p>TimeKits is a standard RandomKits PvP server, with a timed-twist! Jump into the pit with limited time. Kill enemies to keep the clock alive!</p>
-        <br><h3>How long will you last?</h3>
-      </div>
+      <p class="copy-feedback" id="copy-feedback"></p>
     </div>
   </section>
 
-  <section class="stats-section fade-in-on-scroll">
-    <h1>Stats</h1>
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-box long-stat">
-          <h2>Best CCU Per-server</h2>
-          <p>Fertilia: 18 players</p>
-          <p>Collect All Blocks: 15 players</p>
+  <!-- WORLDS STRIP -->
+  <section class="worlds-strip reveal">
+    <div class="worlds-strip-bg"></div>
+    <div class="worlds-strip-overlay"></div>
+    <div class="worlds-inner">
+      <h2>Explore Our Worlds</h2>
+      <p>Every corner of our maps is built with purpose. Discover unique features, hidden secrets, and hand-crafted environments across all our servers.</p>
+    </div>
+  </section>
+
+  <!-- JOIN US PROMO BANNER -->
+  <a href="join-us" class="promo-banner reveal">
+    <div class="promo-banner-inner">
+      <div class="promo-banner-left">
+        <span class="promo-banner-eyebrow">We're hiring</span>
+        <span class="promo-banner-title">Join the BYTE Play team</span>
+        <span class="promo-banner-sub">Developers, builders, mods and creators — come build with us.</span>
+      </div>
+      <div class="promo-banner-cta">
+        See open roles
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+  </a>
+
+  <!-- PROJECTS -->
+  <section class="projects-section">
+    <span class="section-label reveal">Our Work</span>
+    <h2 class="section-title reveal">Projects</h2>
+    <p class="section-sub reveal">Hand-crafted servers with a unique spin on the classics.</p>
+
+    <div class="projects-grid">
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img-wrap" style="background: linear-gradient(135deg, #1a1a2e, #2d2b55);">
+          <img src="creative.png" alt="Collect All Blocks">
         </div>
-        <div class="smaller-stats">
-          <div class="stat-box smaller-stat">
-            <h2>Unique Joins</h2>
-            <p>14,500 and counting..</p>
-            <small>That's a small stadium!</small>
-          </div>
-          <div class="stat-box smaller-stat">
-            <h2>Minehut Favorites</h2>
-            <p>304 Favorites / 27,300 Visits</p>
-            <small>That's 89 visits per favorite! (average is 150!)</small>
-          </div>
+        <div class="project-body">
+          <span class="project-badge badge-archived">Archived</span>
+          <h3>Collect All Blocks!</h3>
+          <p>Over 100+ rare blocks to collect in this unique box gamemode. Drop chances range from 50% down to 0.05%.</p>
+          <div class="project-tagline">Can you collect them all?</div>
         </div>
       </div>
+
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-img-wrap" style="background: linear-gradient(135deg, #0f2b1a, #1a4a2a);">
+          <img src="full%20sized%20hoe.png" alt="Fertilia">
+        </div>
+        <div class="project-body">
+          <span class="project-badge badge-live">Live Now</span>
+          <h3>Fertilia</h3>
+          <p>Increase your Farm Level, rebirth to unlock better crops, and grind the Travelling Merchant for powerful boosters.</p>
+          <div class="project-tagline">Today is your lucky day?</div>
+        </div>
+      </div>
+
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-img-wrap" style="background: linear-gradient(135deg, #2b1a0f, #4a2e1a);">
+          <img src="timekits.png" alt="TimeKits">
+        </div>
+        <div class="project-body">
+          <span class="project-badge badge-dev">In Development</span>
+          <h3>TimeKits</h3>
+          <p>A RandomKits PvP server with a timed twist. Jump into the pit, kill enemies, and keep the clock alive.</p>
+          <div class="project-tagline">How long will you last?</div>
+        </div>
+      </div>
     </div>
   </section>
-<!--
-  <section id="updates" class="updates-section fade-in-on-scroll">
-    <h2>Latest Announcements</h2>
-    <div class="update-grid">
-      <div class="update-card">
-        <h3>Rebranding Announcement</h3>
-        <p>We're rebranding to reflect our goals and aspirations.</p>
-        <a href="post8" class="update-link">Learn More</a>
+
+  <!-- STATS -->
+  <section class="stats-section-new">
+    <span class="section-label reveal">By the Numbers</span>
+    <h2 class="section-title reveal">The Community</h2>
+    <p class="section-sub reveal">Growing every week.</p>
+    <div class="stats-grid-new">
+      <div class="stat-card reveal reveal-delay-1">
+        <span class="stat-icon">👥</span>
+        <span class="stat-number">14,500+</span>
+        <span class="stat-label">Unique Joins</span>
+        <span class="stat-note">That's a small stadium!</span>
       </div>
-      <div class="update-card">
-        <h3>Fertilia - Announcement!</h3>
-        <p>Can you become a top farmer?!</p><br><br>
-        <a href="post7" class="update-link">Learn More</a>
+      <div class="stat-card reveal reveal-delay-2">
+        <span class="stat-icon">⚡</span>
+        <span class="stat-number">24</span>
+        <span class="stat-label">Peak CCU — Fertilia</span>
+        <span class="stat-note">All-time best concurrent</span>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <span class="stat-icon">⭐</span>
+        <span class="stat-number">304</span>
+        <span class="stat-label">Minehut Favourites</span>
+        <span class="stat-note">27,300 total visits</span>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <span class="stat-icon">🎮</span>
+        <span class="stat-number">15</span>
+        <span class="stat-label">Peak CCU — Collect All Blocks</span>
+        <span class="stat-note">Archived server</span>
       </div>
     </div>
-  </section>-->
+  </section>
 
-  <!-- <section class="achievements-section fade-in-on-scroll">
-    <h2>BYTE Achievements</h2>
-    <div class="achievement-grid">
-      <div class="achievement-card">
-        <h3>Top Server Uptime</h3>
-        <p>Our servers maintained 99.99% uptime over the last 12 months!</p>
-      </div>
-      <div class="achievement-card">
-        <h3>Player Milestone</h3>
-        <p>6,700+ unique players joined since launch — thank you!</p>
-      </div>
-      <div class="achievement-card">
-        <h3>Game Innovation</h3>
-        <p>First Australian-hosted farm progression RPG using real-time boosters and custom scripts.</p>
-      </div>
+  <!-- SHOP CTA -->
+  <section class="shop-cta">
+    <div class="shop-cta-inner">
+      <span class="section-label reveal">Support Us</span>
+      <h2 class="reveal">The BYTE Store</h2>
+      <p class="reveal">
+        Grab boosters, XP perks and prestige upgrades.<br>
+        Our games stay free-to-play — the store just keeps the lights on.
+      </p>
+      <a href="https://byteplay.tebex.io" class="cta-button reveal">Visit the Store</a>
     </div>
-  </section> -->
+  </section>
 
-<section id="shop" class="stats-section fade-in-on-scroll" style="background: linear-gradient(145deg, #0d1b2a, #1b263b); color: white; text-align: center; padding: 5rem 2rem; position: relative;">
-  <h1 style="font-size: 3rem;">🛒 BYTE Store</h1>
-  <h3 style="max-width: 800px; margin: 0 auto;">Useful upgrades. Support our projects!</h3>
-  <p style="margin-top: 1.5rem; font-size: 1.1rem; color: #ccc;">Access powerful boosters, XP perks, and prestige upgrades. <br><br>We keep our games Free to Play friendly, while upkeeping our server.</p>
-  
-  <br>
-  <br>
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
 
-  <a href="https://byteplay.tebex.io" class="cta-button" style="margin-top: 3rem; animation: pulse-glow 2s infinite;">Visit Shop</a>
-
-  <style>
-    @keyframes pulse-glow {
-      0% { box-shadow: 0 0 10px #00b4d8; }
-      50% { box-shadow: 0 0 25px #00b4d8; }
-      100% { box-shadow: 0 0 10px #00b4d8; }
-    }
-
-    .store-icons img {
-      filter: drop-shadow(0 0 4px #0ff4);
-    }
-
-    .store-icons p {
-      margin-top: 0.2rem;
-      font-weight: bold;
-      color: #fff;
-    }
-  </style>
-</section>
-
-
-
-
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
-    });
-</script>
-
-
-  <!-- Scripts -->
   <script>
-    function copyServerIP2() {
-      const serverIP = "fertilia.byteplay.xyz";
-      navigator.clipboard.writeText(serverIP).then(() => {
-        document.getElementById("copy-message-2").innerText = "Server IP copied!";
-        setTimeout(() => {
-          document.getElementById("copy-message-2").innerText = "";
-        }, 2000);
-      }).catch((err) => {
-        console.error("Failed to copy: ", err);
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', function () {
+      this.classList.toggle('open');
+      document.getElementById('main-nav').classList.toggle('open');
+    });
+
+    // Copy IP
+    function copyIP() {
+      navigator.clipboard.writeText('fertilia.byteplay.xyz').then(() => {
+        const fb = document.getElementById('copy-feedback');
+        fb.textContent = '✓ Copied to clipboard!';
+        setTimeout(() => { fb.textContent = ''; }, 2500);
       });
     }
-    function copyServerIP() {
-      const serverIP = "fertilia.byteplay.xyz";
-      navigator.clipboard.writeText(serverIP).then(() => {
-        document.getElementById("copy-message").innerText = "Server IP copied!";
-        setTimeout(() => {
-          document.getElementById("copy-message").innerText = "";
-        }, 2000);
-      }).catch((err) => {
-        console.error("Failed to copy: ", err);
-      });
-    }
+    
+    // Scroll reveal
+    const obs = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    window.onload = function () {
-      const img = document.querySelector('.product-image img');
-      const productImageContainer = document.querySelector('.product-image');
-      if (img) {
-        img.onload = function () {
-          const aspectRatio = img.naturalHeight / img.naturalWidth;
-          if (aspectRatio > 2) {
-            productImageContainer.classList.add('hidden');
-          }
-        };
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      }, {
-        threshold: 0.15
-      });
-
-      document.querySelectorAll('.fade-in-on-scroll').forEach((el) => {
-        observer.observe(el);
-      });
-    };
+    // Footer
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
   </script>
 
-<script>
-  // Launch time in UNIX seconds
-  const rebootLaunch = 1764518400;
-
-  function updateRebootCountdown() {
-    const now = Math.floor(Date.now() / 1000); // current UNIX time in seconds
-    const distance = rebootLaunch - now;
-
-    if (distance <= 0) {
-      document.getElementById("reboot-countdown").innerText = "Out now!";
-      return;
-    }
-
-    const d = Math.floor(distance / 86400); // 24 * 60 * 60
-    const h = Math.floor((distance % 86400) / 3600);
-    const m = Math.floor((distance % 3600) / 60);
-    const s = Math.floor(distance % 60);
-
-    document.getElementById("reboot-countdown").innerText =
-      `${d}d ${h}h ${m}m ${s}s`;
-  }
-
-  setInterval(updateRebootCountdown, 1000);
-  updateRebootCountdown();
-</script>
-
-
-  
 </body>
 </html>

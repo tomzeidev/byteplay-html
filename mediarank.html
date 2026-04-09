@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media - BYTE Play</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="main-header fade-in-on-scroll">
+    <header class="main-header">
     <div class="logo">
-      <img src="nova-logo.png" alt="Nova Networks Logo">
+      <img src="nova-logo.png" alt="BYTE Play Logo">
     </div>
-    <nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-nav">
       <ul>
-        <li><a href="index" >Home</a></li>
+        <li><a href="index">Home</a></li>
         <li><a href="servers">Servers</a></li>
         <li><a href="developer-blog">Posts</a></li>
         <li><a href="baltop">DB</a></li>
         <li><a href="https://byteplay.tebex.io">Shop</a></li>
-        <li><a href="mediarank" class="active">Media Rank</a></li>
       </ul>
     </nav>
   </header>
@@ -98,7 +100,7 @@
     });
 
     function copyServerIP() {
-      const serverIP = "fertilia.novamc.net";
+      const serverIP = "fertilia.byteplay.xyz";
       navigator.clipboard.writeText(serverIP).then(() => {
         document.getElementById("copy-message").innerText = "Server IP copied!";
         setTimeout(() => {
@@ -136,5 +138,12 @@
       });
     };
   </script>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function () {
+    this.classList.toggle('open');
+    document.getElementById('main-nav').classList.toggle('open');
+  });
+</script>
 </body>
 </html>

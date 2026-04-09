@@ -4,21 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baltop - BYTE Play</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="main-header">
+    <header class="main-header">
     <div class="logo">
-      <img src="nova-logo.png" alt="Nova Networks Logo">
+      <img src="nova-logo.png" alt="BYTE Play Logo">
     </div>
-    <nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="main-nav">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="servers.html">Servers</a></li>
-        <li><a href="developer-blog.html" >Posts</a></li>
-        <li><a href="baltop.html" class="active">Leaderboards</a></li>
+        <li><a href="index">Home</a></li>
+        <li><a href="servers">Servers</a></li>
+        <li><a href="developer-blog">Posts</a></li>
+        <li><a href="baltop" class="active">DB</a></li>
         <li><a href="https://byteplay.tebex.io">Shop</a></li>
       </ul>
     </nav>
@@ -39,6 +42,13 @@
     .then(data => {
       document.getElementById("footer-placeholder").innerHTML = data;
     });
+</script>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click', function () {
+    this.classList.toggle('open');
+    document.getElementById('main-nav').classList.toggle('open');
+  });
 </script>
 </body>
 </html>
