@@ -1,0 +1,86 @@
+{
+  "id": "fertilia-update-9",
+  "title": "Fertilia: Update 9",
+  "date": "December 28, 2025",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "The New Years Event is here! Get damage on the New Years Creeper Drop for New Year keys to spend in the limited world!",
+  "thumb": "img/update-9.PNG",
+  "content": [
+    { "type": "p", "html": "<b>Happy New Years!</b> We hope you had a great holidays!" },
+    { "type": "p", "html": "As updates continue, we'll be focussing more on <b>bug fixes and balances.</b>" },
+
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "New Years Key" },
+    { "type": "p",  "html": "Used throughout the <b>New Years Island!</b>" },
+    { "type": "p",  "html": "Damage the <b>New Years Creeper Drop</b> to get these!" },
+    { "type": "img", "src": "img/post15-img7.PNG" },
+
+    { "type": "h2", "text": "New Years Creeper Drop" },
+    { "type": "p",  "html": "This occurs <b>hourly on the New Years Island!</b>" },
+    { "type": "p",  "html": "Depending on damage percent dealt, you'll receive double the amount of <b>New Years Keys!</b>" },
+    { "type": "p",  "html": "<b>For example:</b>" },
+    { "type": "p",  "html": "If you deal <b>50%</b> of the damage, you'll receive <b>100x Keys</b>" },
+    { "type": "p",  "html": "If you deal <b>10%</b> of the damage, you'll receive <b>20x Keys</b>" },
+    { "type": "p",  "html": "It only stays for <b>5 minutes hourly, so get your keys quick.</b>" },
+    { "type": "img", "src": "img/post15-img9.PNG" },
+
+    { "type": "h2", "text": "New Years Crates" },
+    { "type": "p",  "html": "One of many ways to spend your <b>New Year Keys. Will you be lucky?</b>" },
+    { "type": "p",  "html": "Includes <b>LIMITED NEW YEAR ARMOR and weapons!</b>" },
+    { "type": "p",  "html": "You have the option to spend <b>1x, 10x or 25x Keys</b>" },
+    { "type": "p",  "html": "Each crate has the same items, with <b>different, greater chances!</b>" },
+    { "type": "img", "src": "img/post15-img8.PNG" },
+    { "type": "img", "src": "img/post15-img10.PNG" },
+
+    { "type": "h2", "text": "Tags" },
+    { "type": "p",  "html": "Spice up your name in the <b>chat and tablist!</b>" },
+    { "type": "p",  "html": "Leaderboard Crown tags have been moved here so you can select them!" },
+    { "type": "p",  "html": "<b>Includes 5 new tags this update:</b>" },
+    { "type": "p",  "html": "Shiny Enthusiast — <b>Unlocked for completing 20 Shiny Quests</b>" },
+    { "type": "p",  "html": "Racer — <b>Win a Crop Race</b>" },
+    { "type": "p",  "html": "Xmas — <b>Purchased from the Santa Shop</b>" },
+    { "type": "p",  "html": "26 — <b>Unlocked during the 2026 New Years Event</b>" },
+    { "type": "p",  "html": "Booster — <b>Boost the Discord Server</b>" },
+    { "type": "p",  "html": "Gem Party — <b>Be online when the Gem Crate is active (10+ players)</b>" },
+    { "type": "img", "src": "img/post15-img1.PNG" },
+    { "type": "img", "src": "img/post15-img4.PNG" },
+
+    { "type": "h2", "text": "New Years Leaderboards" },
+    { "type": "p",  "html": "<b>Fight the creeper, climb the boards!</b>" },
+    { "type": "p",  "html": "#1 on both of these boards at the end of this event will receive a <b>MEDALLION CHARM EACH!</b>" },
+    { "type": "p",  "html": "<b>Two limited leaderboards:</b>" },
+    { "type": "p",  "html": "Best Creeper Damage — <b>Most damage to the creeper drop in a singular round</b>" },
+    { "type": "p",  "html": "All Time Creeper Damage — <b>Most damage to the creeper drop across the entire week</b>" },
+    { "type": "p",  "html": "We hope this rewards both short-term and long-term grinders!" },
+    { "type": "img", "src": "img/post15-img2.PNG" },
+    { "type": "img", "src": "img/post15-img3.PNG" },
+
+    { "type": "h2", "text": "Time Trials" },
+    { "type": "p",  "html": "Another fun competition!" },
+    { "type": "p",  "html": "Head to the portal in the <b>New Years World</b> to start a <b>Time Trial!</b>" },
+    { "type": "p",  "html": "You'll be teleported to the Time Trials Island." },
+    { "type": "p",  "html": "Farm as many crops as you can to <b>level up.</b>" },
+    { "type": "p",  "html": "Durability is disabled here, so you won't have to <b>repair.</b>" },
+    { "type": "p",  "html": "<b>You're limited to only 5 minutes, so get your boosters ready!</b>" },
+    { "type": "p",  "html": "<b>What level will you get?</b>" },
+    { "type": "img", "src": "img/post15-img5.PNG" },
+    { "type": "img", "src": "img/post15-img6.PNG" },
+
+    { "type": "h2", "text": "Fixed / Changed" },
+    { "type": "fixed", "items": [
+      "Rainbow Hunter charm chance from Rainbow Machine 0.5% → 2%",
+      "Broadcast culling — far less messages sent globally for better chatting experience",
+      "Windgrab Enchant now only lasts 5 seconds of Speed V",
+      "Items waiting in Escrow to collect message no longer spams",
+      "Removed /paymoney",
+      "You can no longer do /upgrade",
+      "Festive Tools (Hoe, Battleaxe, etc) now look naturally held to other players",
+      "Fixes to Diamond and Money potion cooldowns",
+      "Chaotic: 0.5% chance to destroy tool → 0.5% chance to destroy 1/4 durability of tool"
+    ]},
+
+    { "type": "signoff", "text": "Our biggest event yet! Have fun!!" }
+  ]
+}

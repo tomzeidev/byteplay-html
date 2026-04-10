@@ -2,16 +2,278 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Developer Blog - BYTE Play</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Developer Blog — BYTE Play">
+  <meta property="og:description" content="Update logs, announcements and everything from the BYTE Play team.">
+  <meta property="og:image" content="/img/og-banner.png">
+  <title>Developer Blog — BYTE Play</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* ── Blog page overrides ─────────────────────── */
+    body { background: #fff; color: #1a1a1a; }
+
+    /* Hero — light, matching existing design */
+    .blog-hero {
+      background: #f8f8f8;
+      padding: 5rem 2rem 3.5rem;
+      text-align: center;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .blog-hero-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent2);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-hero h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #111;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-hero p {
+      font-size: 1rem;
+      color: #6b7280;
+    }
+
+    /* ── Filter bar ──────────────────────────────── */
+    .filter-bar {
+      position: sticky;
+      top: 64px; /* sits below the sticky header */
+      z-index: 50;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .filter-bar::-webkit-scrollbar { display: none; }
+
+    .filter-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 10px 16px;
+      border: none;
+      background: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: color 0.2s, border-color 0.2s;
+      margin-bottom: -1px; /* overlap the bar's border-bottom */
+    }
+
+    .filter-btn:hover { color: #111; }
+
+    .filter-btn.active {
+      color: var(--accent2);
+      border-bottom-color: var(--accent2);
+    }
+
+    .filter-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 6px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: #f3f4f6;
+      color: #6b7280;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .filter-btn.active .filter-count {
+      background: rgba(28, 135, 201, 0.12);
+      color: var(--accent2);
+    }
+
+    /* Category-specific active colours */
+    .filter-btn[data-cat="fertilia"].active       { color: #16a34a; border-bottom-color: #16a34a; }
+    .filter-btn[data-cat="fertilia"].active .filter-count { background: rgba(22,163,74,0.1); color: #16a34a; }
+
+    .filter-btn[data-cat="cab"].active             { color: #7c3aed; border-bottom-color: #7c3aed; }
+    .filter-btn[data-cat="cab"].active .filter-count { background: rgba(124,58,237,0.1); color: #7c3aed; }
+
+    .filter-btn[data-cat="announcements"].active   { color: #d97706; border-bottom-color: #d97706; }
+    .filter-btn[data-cat="announcements"].active .filter-count { background: rgba(217,119,6,0.1); color: #d97706; }
+
+    /* ── Post list ───────────────────────────────── */
+    .blog-posts {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 2.4rem 2rem 4rem;
+    }
+
+    /* Category group heading */
+    .post-group-heading {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 2.4rem 0 1.4rem;
+    }
+
+    .post-group-heading:first-child { margin-top: 0; }
+
+    .post-group-line {
+      flex: 1;
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    .post-group-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      padding: 3px 12px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .post-group-label.label-fertilia     { color: #16a34a; border-color: rgba(22,163,74,0.3);  background: rgba(22,163,74,0.06); }
+    .post-group-label.label-cab          { color: #7c3aed; border-color: rgba(124,58,237,0.3); background: rgba(124,58,237,0.06); }
+    .post-group-label.label-announcements{ color: #d97706; border-color: rgba(217,119,6,0.3);  background: rgba(217,119,6,0.06); }
+
+    /* Individual post card */
+    .post {
+      display: flex;
+      gap: 1.4rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+
+    .post:last-child { border-bottom: none; }
+
+    .post-thumb {
+      width: 110px;
+      height: 78px;
+      border-radius: 8px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #f3f4f6;
+      display: block;
+      margin: 0;
+    }
+
+    .post-content { flex: 1; min-width: 0; }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 5px;
+      flex-wrap: wrap;
+    }
+
+    .post-cat-tag {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .tag-fertilia     { color: #16a34a; border-color: rgba(22,163,74,0.3);  background: rgba(22,163,74,0.07); }
+    .tag-cab          { color: #7c3aed; border-color: rgba(124,58,237,0.3); background: rgba(124,58,237,0.07); }
+    .tag-announcements{ color: #d97706; border-color: rgba(217,119,6,0.3);  background: rgba(217,119,6,0.07); }
+
+    .post-date {
+      font-size: 0.78rem;
+      color: #9ca3af;
+      font-weight: 500;
+    }
+
+    .post-content h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 4px;
+      line-height: 1.3;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .post-content .excerpt {
+      font-size: 0.85rem;
+      color: #6b7280;
+      line-height: 1.55;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .read-more {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--accent2);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.15s;
+    }
+
+    .post:hover .read-more { gap: 7px; }
+
+    /* Empty state */
+    .posts-empty {
+      text-align: center;
+      padding: 4rem 0;
+      color: #9ca3af;
+      display: none;
+    }
+
+    .posts-empty p { font-size: 1rem; }
+
+    /* Hidden post */
+    .post[data-hidden="true"],
+    .post-group[data-hidden="true"] { display: none; }
+
+    @media (max-width: 600px) {
+      .filter-bar { padding: 0 1rem; }
+      .blog-posts  { padding: 1.6rem 1rem 3rem; }
+      .post-thumb  { width: 80px; height: 56px; }
+      .post-content h2 { font-size: 0.95rem; white-space: normal; }
+    }
+  </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header class="main-header">
     <div class="logo">
-      <img src="nova-logo.png" alt="Nova Networks Logo">
+      <img src="nova-logo.png" alt="BYTE Play Logo">
     </div>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
@@ -27,174 +289,332 @@
     </nav>
   </header>
 
-  <section class="hero">
+  <!-- HERO -->
+  <section class="blog-hero">
+    <span class="blog-hero-label">BYTE Play</span>
     <h1>Developer Blog</h1>
-    <p>Update logs, announcements and everything!</p>
+    <p>Update logs, announcements and everything from the team.</p>
   </section>
 
-  <section class="blog-posts">
-    <div class="post">
-      <img src="img/update-9.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 9!</h2>
-        <p class="date">December 28, 2025</p>
-        <p class="excerpt">The <b>New Years Event</b> is here! Get damage on the <b>New Years Creeper Drop</b> for <b>New Year</b> keys to spend in the <b>limited world!</b></p>
-        <a href="fertilia-update-9" class="read-more">Read More</a>
+  <!-- FILTER BAR -->
+  <div class="filter-bar" role="tablist" aria-label="Filter posts by category">
+    <button class="filter-btn active" data-cat="all"           role="tab" aria-selected="true">All posts   <span class="filter-count" id="count-all">16</span></button>
+    <button class="filter-btn"        data-cat="fertilia"      role="tab" aria-selected="false">Fertilia    <span class="filter-count" id="count-fertilia">9</span></button>
+    <button class="filter-btn"        data-cat="cab"           role="tab" aria-selected="false">Collect All Blocks <span class="filter-count" id="count-cab">5</span></button>
+    <button class="filter-btn"        data-cat="announcements" role="tab" aria-selected="false">Announcements <span class="filter-count" id="count-announcements">2</span></button>
+  </div>
+
+  <!-- POSTS -->
+  <section class="blog-posts" id="blog-posts">
+
+    <!-- ── FERTILIA ─────────────────────────────── -->
+    <div class="post-group" data-group="fertilia">
+      <div class="post-group-heading">
+        <div class="post-group-line"></div>
+        <span class="post-group-label label-fertilia">Fertilia</span>
+        <div class="post-group-line"></div>
       </div>
-    </div>
-    <div class="post">
-      <img src="img/update-8.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 8!</h2>
-        <p class="date">December 21, 2025</p>
-        <p class="excerpt">Christmas Event: Part 2 is here! Fight two <b>new bosses,</b> unlock expensive <b>new weapons</b>, choose your team and <b>much more</b>!</p>
-        <a href="fertilia-update-8" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="img/update-9.PNG" alt="Fertilia Update 9">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">December 28, 2025</span>
+          </div>
+          <h2>Fertilia: Update 9!</h2>
+          <p class="excerpt">The <b>New Years Event</b> is here! Get damage on the <b>New Years Creeper Drop</b> for <b>New Year</b> keys to spend in the <b>limited world!</b></p>
+          <a href="post.html?id=fertilia-update-9" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="img/update-7.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 7!</h2>
-        <p class="date">December 7, 2025</p>
-        <p class="excerpt">Christmas Event: Part 1 is here! <b>Unlock 4 new upgrades</b>, collect decorations for <b>your tree,</b> and farm the new <b>FESTIVE </b>variant for <b>Christmas Coins!</b></p>
-        <a href="fertilia-update-7" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="img/update-8.PNG" alt="Fertilia Update 8">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">December 21, 2025</span>
+          </div>
+          <h2>Fertilia: Update 8!</h2>
+          <p class="excerpt">Christmas Event: Part 2 is here! Fight two <b>new bosses,</b> unlock expensive <b>new weapons</b>, choose your team and <b>much more</b>!</p>
+          <a href="post.html?id=fertilia-update-8" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="img/update-6.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 6!</h2>
-        <p class="date">December 1, 2025</p>
-        <p class="excerpt">Fertilia is <b>BACK!</b> Join us on a brand new map for fun <b>admin abuse</b>, enchant your hoes for <b>abilities and buffs</b> and fight a <b>new, tough boss</b> <b>+ SO MUCH MORE!</b></p>
-        <a href="fertilia-update-6" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="img/update-7.PNG" alt="Fertilia Update 7">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">December 7, 2025</span>
+          </div>
+          <h2>Fertilia: Update 7!</h2>
+          <p class="excerpt">Christmas Event: Part 1 is here! <b>Unlock 4 new upgrades</b>, collect decorations for <b>your tree,</b> and farm the new <b>FESTIVE</b> variant for <b>Christmas Coins!</b></p>
+          <a href="post.html?id=fertilia-update-7" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="img/update-5.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 5!</h2>
-        <p class="date">July 5, 2025</p>
-        <p class="excerpt">Level up your crate in the new <b>Founder's Event</b>, play the new <b>Whack-A-Crop minigame</b> for fun prizes and more <b>new additions!</b></p>
-        <a href="fertilia-update-5" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="img/update-6.PNG" alt="Fertilia Update 6">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">December 1, 2025</span>
+          </div>
+          <h2>Fertilia: Update 6!</h2>
+          <p class="excerpt">Fertilia is <b>BACK!</b> Join us on a brand new map, enchant your hoes for <b>abilities and buffs</b> and fight a <b>new, tough boss</b> + SO MUCH MORE!</p>
+          <a href="post.html?id=fertilia-update-6" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="img/update-4.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 4!</h2>
-        <p class="date">June 28, 2025</p>
-        <p class="excerpt">Pick up the new <b>synthesis charm, climb the Respect Leaderboard</b> for a chance at a <b>Medallion charm!</b></p>
-        <a href="fertilia-update-4" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="img/update-5.PNG" alt="Fertilia Update 5">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">July 5, 2025</span>
+          </div>
+          <h2>Fertilia: Update 5!</h2>
+          <p class="excerpt">Level up your crate in the new <b>Founder's Event</b>, play the new <b>Whack-A-Crop minigame</b> for fun prizes and more <b>new additions!</b></p>
+          <a href="post.html?id=fertilia-update-5" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="upd3.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 3!</h2>
-        <p class="date">June 21, 2025</p>
-        <p class="excerpt">The <b>Echoon Crop, Season Shop</b> and more are out now!</p>
-        <a href="fertilia-update-3" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="img/update-4.PNG" alt="Fertilia Update 4">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">June 28, 2025</span>
+          </div>
+          <h2>Fertilia: Update 4!</h2>
+          <p class="excerpt">Pick up the new <b>synthesis charm</b>, climb the <b>Respect Leaderboard</b> for a chance at a <b>Medallion charm!</b></p>
+          <a href="post.html?id=fertilia-update-4" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="shiny%20update.PNG" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 2!</h2>
-        <p class="date">June 14, 2025</p>
-        <p class="excerpt">This content drop includes <b>Shiny Quest, easier charms, RAINBOW CROPS and much more</b>!</p>
-        <a href="fertilia-update-2" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="upd3.PNG" alt="Fertilia Update 3">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">June 21, 2025</span>
+          </div>
+          <h2>Fertilia: Update 3!</h2>
+          <p class="excerpt">The <b>Echoon Crop, Season Shop</b> and more are out now!</p>
+          <a href="post.html?id=fertilia-update-3" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="netherwart.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Fertilia: Update 1!</h2>
-        <p class="date">June 6, 2025</p>
-        <p class="excerpt">Check out the <b>new island, new crop, charms, pvp crates</b> and much more!</p>
-        <a href="fertilia-update-1" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="shiny%20update.PNG" alt="Fertilia Update 2">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">June 14, 2025</span>
+          </div>
+          <h2>Fertilia: Update 2!</h2>
+          <p class="excerpt">This content drop includes <b>Shiny Quest, easier charms, RAINBOW CROPS and much more</b>!</p>
+          <a href="post.html?id=fertilia-update-2" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="byteplay.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Re-branding Announcement</h2>
-        <p class="date">June 6, 2025</p>
-        <p class="excerpt">We're renaming our network to better reflect our evolving vision and the experiences we're working to create.</p>
-        <a href="post8" class="read-more">Read More</a>
+
+      <div class="post" data-cat="fertilia">
+        <img class="post-thumb" src="netherwart.png" alt="Fertilia Update 1">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-fertilia">Fertilia</span>
+            <span class="post-date">June 6, 2025</span>
+          </div>
+          <h2>Fertilia: Update 1!</h2>
+          <p class="excerpt">Check out the <b>new island, new crop, charms, pvp crates</b> and much more!</p>
+          <a href="post.html?id=fertilia-update-1" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="cherry.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Nova: Cherry Ring - Announcement!</h2>
-        <p class="date">December 22, 2024</p>
-        <p class="excerpt">The most unique survival server EVER!</p>
-        <a href="post6" class="read-more">Read More</a>
+    </div><!-- /group fertilia -->
+
+    <!-- ── COLLECT ALL BLOCKS ────────────────────── -->
+    <div class="post-group" data-group="cab">
+      <div class="post-group-heading">
+        <div class="post-group-line"></div>
+        <span class="post-group-label label-cab">Collect All Blocks</span>
+        <div class="post-group-line"></div>
       </div>
-    </div>
-    <div class="post">
-      <img src="byteplay.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Collect All Blocks - Update 4!</h2>
-        <p class="date">December 16, 2024</p>
-        <p class="excerpt">It's time to Juice up your new OmniTool!</p>
-        <a href="post5" class="read-more">Read More</a>
+
+      <div class="post" data-cat="cab">
+        <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 4">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-cab">Collect All Blocks</span>
+            <span class="post-date">December 16, 2024</span>
+          </div>
+          <h2>Collect All Blocks — Update 4!</h2>
+          <p class="excerpt">It's time to juice up your new OmniTool!</p>
+          <a href="post5" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="byteplay.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Collect All Blocks - Update 3!</h2>
-        <p class="date">December 1, 2024</p>
-        <p class="excerpt">The Christmas Update for Collect All Blocks is here! Christmas Gifts, Recent Auction Price, RAP leaderboard and more!</p>
-        <a href="post4" class="read-more">Read More</a>
+
+      <div class="post" data-cat="cab">
+        <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 3">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-cab">Collect All Blocks</span>
+            <span class="post-date">December 1, 2024</span>
+          </div>
+          <h2>Collect All Blocks — Update 3!</h2>
+          <p class="excerpt">The Christmas Update is here! Christmas Gifts, Recent Auction Price, RAP leaderboard and more!</p>
+          <a href="post4" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="byteplay.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Collect All Blocks - Update 2!</h2>
-        <p class="date">November 25, 2024</p>
-        <p class="excerpt">The new Collect All Blocks update is here! 3 new rods, new armor, new charm and OP potion!</p>
-        <a href="post3" class="read-more">Read More</a>
+
+      <div class="post" data-cat="cab">
+        <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 2">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-cab">Collect All Blocks</span>
+            <span class="post-date">November 25, 2024</span>
+          </div>
+          <h2>Collect All Blocks — Update 2!</h2>
+          <p class="excerpt">3 new rods, new armor, a new charm and an OP potion!</p>
+          <a href="post3" class="read-more">Read More →</a>
+        </div>
       </div>
-    </div>
-    <div class="post">
-      <img src="byteplay.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Collect All Blocks - Update 1!</h2>
-        <p class="date">November 14, 2024</p>
-        <p class="excerpt">The newest update in Collect All Blocks! is here! 9 new blocks added, many fixes for teams, team war and more!</p>
-        <a href="post2" class="read-more">Read More</a>
+
+      <div class="post" data-cat="cab">
+        <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 1">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-cab">Collect All Blocks</span>
+            <span class="post-date">November 14, 2024</span>
+          </div>
+          <h2>Collect All Blocks — Update 1!</h2>
+          <p class="excerpt">9 new blocks added, many fixes for teams, team war and more!</p>
+          <a href="post2" class="read-more">Read More →</a>
+        </div>
       </div>
+
+      <div class="post" data-cat="cab">
+        <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Announcement">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-cab">Collect All Blocks</span>
+            <span class="post-date">November 9, 2024</span>
+          </div>
+          <h2>Collect All Blocks — Announcement!</h2>
+          <p class="excerpt">Collect All Blocks! has released. Here's some information!</p>
+          <a href="post1" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </div><!-- /group cab -->
+
+    <!-- ── ANNOUNCEMENTS ─────────────────────────── -->
+    <div class="post-group" data-group="announcements">
+      <div class="post-group-heading">
+        <div class="post-group-line"></div>
+        <span class="post-group-label label-announcements">Announcements</span>
+        <div class="post-group-line"></div>
+      </div>
+
+      <div class="post" data-cat="announcements">
+        <img class="post-thumb" src="byteplay.png" alt="Re-branding Announcement">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-announcements">Announcement</span>
+            <span class="post-date">June 6, 2025</span>
+          </div>
+          <h2>Re-branding Announcement</h2>
+          <p class="excerpt">We're renaming our network to better reflect our evolving vision and the experiences we're working to create.</p>
+          <a href="post8" class="read-more">Read More →</a>
+        </div>
+      </div>
+
+      <div class="post" data-cat="announcements">
+        <img class="post-thumb" src="cherry.png" alt="Nova Cherry Ring">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-announcements">Announcement</span>
+            <span class="post-date">December 22, 2024</span>
+          </div>
+          <h2>Nova: Cherry Ring — Announcement!</h2>
+          <p class="excerpt">The most unique survival server EVER!</p>
+          <a href="post6" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </div><!-- /group announcements -->
+
+    <!-- Empty state -->
+    <div class="posts-empty" id="posts-empty">
+      <p>No posts in this category yet.</p>
     </div>
 
-          <div class="post">
-      <img src="byteplay.png" alt="Blog Post 1">
-      <div class="post-content">
-        <h2>Collect All Blocks - Announcement!</h2>
-        <p class="date">November 9, 2024</p>
-        <p class="excerpt">Collect All Blocks! has released. Here's some information!</p>
-        <a href="post1" class="read-more">Read More</a>
-      </div>
-    </div>
-
-    <!-- Additional blog posts can be added here -->
   </section>
 
-<div id="footer-placeholder"></div>
-<script>
-  fetch("footer.html")
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById("footer-placeholder").innerHTML = data;
+  <!-- FOOTER -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', function () {
+      this.classList.toggle('open');
+      document.getElementById('main-nav').classList.toggle('open');
     });
-</script>
-<script>
-  document.getElementById('hamburger').addEventListener('click', function () {
-    this.classList.toggle('open');
-    document.getElementById('main-nav').classList.toggle('open');
-  });
-</script>
+
+    // Footer
+    fetch('footer.html').then(r => r.text()).then(html => {
+      document.getElementById('footer-placeholder').innerHTML = html;
+    });
+
+    // ── Category filter ──────────────────────────
+    const buttons = document.querySelectorAll('.filter-btn');
+    const posts   = document.querySelectorAll('.post[data-cat]');
+    const groups  = document.querySelectorAll('.post-group[data-group]');
+    const empty   = document.getElementById('posts-empty');
+
+    // Pre-count per category
+    const counts = { all: 0 };
+    posts.forEach(p => {
+      const cat = p.dataset.cat;
+      counts[cat] = (counts[cat] || 0) + 1;
+      counts.all++;
+    });
+
+    // Update count badges
+    Object.entries(counts).forEach(([cat, n]) => {
+      const el = document.getElementById('count-' + cat);
+      if (el) el.textContent = n;
+    });
+
+    function applyFilter(cat) {
+      let visiblePosts = 0;
+
+      posts.forEach(post => {
+        const show = cat === 'all' || post.dataset.cat === cat;
+        post.style.display = show ? '' : 'none';
+        if (show) visiblePosts++;
+      });
+
+      // Hide group headings when all their posts are hidden
+      groups.forEach(group => {
+        const groupCat = group.dataset.group;
+        const show = cat === 'all' || cat === groupCat;
+        group.style.display = show ? '' : 'none';
+      });
+
+      empty.style.display = visiblePosts === 0 ? 'block' : 'none';
+    }
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        applyFilter(btn.dataset.cat);
+      });
+    });
+  </script>
+
 </body>
 </html>

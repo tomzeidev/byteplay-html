@@ -1,0 +1,97 @@
+{
+  "id": "fertilia-update-5",
+  "title": "Fertilia: Update 5",
+  "date": "July 5, 2025",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "Level up your crate in the new Founder's Event, play the new Whack-A-Crop minigame for fun prizes and more new additions!",
+  "thumb": "img/update-5.PNG",
+  "content": [
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "5,000 Unique Joins Event" },
+    { "type": "p",  "html": "Thank you <b>EVERYONE</b> for being part of Fertilia!" },
+
+    { "type": "h2", "text": "Founder's Island" },
+    { "type": "p",  "html": "Our first ever <b>LIMITED ISLAND!</b>" },
+    { "type": "p",  "html": "Here for just <b>two weeks only.</b>" },
+    { "type": "p",  "html": "<b>Crops here only drop Founder Keys and event items!</b>" },
+    { "type": "p",  "html": "The <b>Founder's Key</b> is used on the new <b>Founder's Growth Crate!</b>" },
+    { "type": "img", "src": "img/post11-img15.PNG" },
+
+    { "type": "h2", "text": "Founder's Growth Crate" },
+    { "type": "p",  "html": "<b>Grow your crate from Sprout to Enderbloom!</b>" },
+    { "type": "p",  "html": "Your <b>Founder's Growth Crate</b> begins with basic loot." },
+    { "type": "p",  "html": "Upgrade <b>your crate</b> for <b>better loot!</b>" },
+    { "type": "p",  "html": "<b>Requires more keys</b> as you upgrade." },
+    { "type": "p",  "html": "Reach <b>ENDERBLOOM I</b> for a chance at <b>MEDALLION CHARM!</b>" },
+    { "type": "p",  "html": "Be warned.. the Medallion Charm is <b>limited to 3</b> opens before it disappears." },
+    { "type": "img", "src": "img/post11-img17.PNG" },
+    { "type": "img", "src": "img/post11-img18.PNG" },
+
+    { "type": "h2", "text": "Whack-A-Crop" },
+    { "type": "p",  "html": "<b>Like Whack-A-Mole... but more vegetables and vengeance!</b>" },
+    { "type": "p",  "html": "Click as many crops as you can in 60 seconds." },
+    { "type": "p",  "html": "<b>Better crops you click are worth more points!</b>" },
+    { "type": "p",  "html": "Watch for rotten crops and bombs.. you'll <b>lose points!</b>" },
+    { "type": "p",  "html": "<b>Every new personal best yields free rewards!</b>" },
+    { "type": "img", "src": "img/post11-img7.PNG" },
+    { "type": "img", "src": "img/post11-img8.PNG" },
+    { "type": "img", "src": "img/post11-img9.PNG" },
+
+    { "type": "h2", "text": "Potion Shrine" },
+    { "type": "p",  "html": "Get your hands on these <b>exotic potions!</b>" },
+    { "type": "p",  "html": "Includes <b>2 new superior potions!</b>" },
+    { "type": "img", "src": "img/post11-img10.PNG" },
+    { "type": "img", "src": "img/post11-img13.PNG" },
+    { "type": "img", "src": "img/post11-img14.PNG" },
+
+    { "type": "h2", "text": "Rainbow Hunter Charm" },
+    { "type": "p",  "html": "Rainbow Crops are <b>hitting your farms!</b>" },
+    { "type": "p",  "html": "Small chance when converting Rainbows to get the <b>Rainbow Hunter!</b>" },
+    { "type": "p",  "html": "When equipped, enables the chance for natural <b>Rainbow Crops.</b>" },
+    { "type": "img", "src": "img/post11-img11.PNG" },
+
+    { "type": "h2", "text": "Season 2 Trophy" },
+    { "type": "p",  "html": "Woah.. <b>SHINY!</b>" },
+    { "type": "p",  "html": "With the season ending, jump in-game to claim a <b>Season 2 Trophy!</b>" },
+    { "type": "p",  "html": "Only available for a <b>limited time.</b>" },
+    { "type": "p",  "html": "<b>REMINDER:</b> They can be equipped as charms for a 10% discount to <b>Farm Levels.</b>" },
+    { "type": "img", "src": "img/post11-img12.PNG" },
+
+    { "type": "h2", "text": "Gem Hoard" },
+    { "type": "p",  "html": "Making it rain <b>DIAMONDS!</b>" },
+    { "type": "p",  "html": "A new boss.. or <b>hoard</b> has hit the <b>PVP Islands!</b>" },
+    { "type": "p",  "html": "Spawning them requires <b>50x Tier 1 Diamond Potions</b>" },
+    { "type": "p",  "html": "Each will drop <b>1-5 Diamond Lootbags.</b>" },
+    { "type": "img", "src": "img/post11-img16.PNG" },
+
+    { "type": "h2", "text": "Changed" },
+    { "type": "fixed", "items": [
+      "Significant buff to Water Sprinkler — radius is much bigger",
+      "Added extra weight to Luck Potions, should see a noticeable difference",
+      "Added a lot more items to Farmer Mouldroot's loot table, including Regen I, Strength I, Bronze and Silver crates",
+      "Echoon Shop restocks are no longer broadcasted",
+      "Minotaur boss now drops the correct Warrior lore on charm",
+      "Reduced items received from Composter",
+      "VIP now earns 10% more Gems from Composter",
+      "Diamond Delirium now earns more gems in Composter",
+      "Farm Level required to rebirth has been decreased significantly",
+      "Shady Dealer has been moved to Island 2",
+      "Minotaur Boss has been made slower",
+      "Farmer Mouldroot boss has been made easier",
+      "Decreased Farmer Mouldroot requirement to 50 Wheat",
+      "Added 2 minute cooldown to all bosses globally"
+    ]},
+
+    { "type": "h2", "text": "Fixed" },
+    { "type": "fixed", "items": [
+      "Regen Potions are now upgradable in Potion Combine Menu",
+      "New players no longer receive the Season 2 Trophy",
+      "Vote Crate referral fix",
+      "Vanilla drops from Farmer Mouldroot Boss and Reinforcement"
+    ]},
+
+    { "type": "signoff", "text": "Thanks all! What should we add next?!" }
+  ]
+}

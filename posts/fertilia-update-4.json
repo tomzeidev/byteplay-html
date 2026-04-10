@@ -1,0 +1,88 @@
+{
+  "id": "fertilia-update-4",
+  "title": "Fertilia: Update 4",
+  "date": "June 28, 2025",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "Pick up the new synthesis charm, climb the Respect Leaderboard for a chance at a Medallion charm!",
+  "thumb": "img/update-4.PNG",
+  "content": [
+    { "type": "p", "html": "To preface, I apologize for the smaller update. Our key focus for this, and next update is for <b>bug fixes.</b> If you know of any, let us know on Discord!" },
+
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "Crop Races" },
+    { "type": "p",  "html": "Race to receive <b>ultimate rewards!</b>" },
+    { "type": "p",  "html": "Races randomly start every 30 minutes." },
+    { "type": "p",  "html": "Farm the nominated crop to receive points." },
+    { "type": "p",  "html": "Winners of crop races receive the new <b>RACE CRATE!</b>" },
+    { "type": "img", "src": "img/post10-img1+.PNG" },
+
+    { "type": "h2", "text": "Race Crate" },
+    { "type": "p",  "html": "The <b>Race Crate</b> contains tons of <b>overpowered goodies!</b>" },
+    { "type": "p",  "html": "Including a chance at the <b>Exclusive INSANE Water Sprinkler!</b>" },
+    { "type": "img", "src": "img/post10-img2.PNG" },
+
+    { "type": "h2", "text": "Charmstone Satchel" },
+    { "type": "p",  "html": "The <b>Shady Merchant</b> has a new item!" },
+    { "type": "p",  "html": "Pick up the new <b>Charmstone Satchel</b> to store charms." },
+    { "type": "img", "src": "img/post10-img3.PNG" },
+
+    { "type": "h2", "text": "Collector's Sigil" },
+    { "type": "p",  "html": "A new <b>highly useful tool!</b>" },
+    { "type": "p",  "html": "The <b>Collector's Sigil</b> item instantly sells your <b>ENTIRE ESCROW!</b>" },
+    { "type": "p",  "html": "Be warned, it has a <b>30 minute cooldown.</b>" },
+    { "type": "p",  "html": "This can be found in the <b>Tier 3</b> of Travelling Merchant." },
+    { "type": "img", "src": "img/post10-img4.PNG" },
+
+    { "type": "h2", "text": "Shiny Crops Potion" },
+    { "type": "p",  "html": "Once exclusive, <b>now available!</b>" },
+    { "type": "p",  "html": "The <b>Shiny Crops Potion</b> doubles your chances at Shiny Crops!" },
+    { "type": "p",  "html": "Lasts 5 minutes! Can be found in the <b>Tier 3</b> of Travelling Merchant." },
+    { "type": "img", "src": "img/post10-img7.PNG" },
+
+    { "type": "h2", "text": "Synthesis Charm" },
+    { "type": "p",  "html": "Push the limits on your <b>Private Islands!</b>" },
+    { "type": "p",  "html": "Grab the new <b>Synthesis</b> charm for a chance to receive the seed back after harvesting!" },
+    { "type": "p",  "html": "Found in the <b>Season Shop!</b>" },
+    { "type": "img", "src": "img/post10-img5.PNG" },
+
+    { "type": "h2", "text": "Respect Leaderboard" },
+    { "type": "p",  "html": "Exclusive Rewards are up for players with the highest respect level from Season Shop!" },
+    { "type": "p",  "html": "<b>#1 — Medallion Charm, 6x EXCLUSIVE Chorus Flower</b>" },
+    { "type": "p",  "html": "<b>#2 — Synthesis Charm, 20x ULTIMATE Seeds, 3x EXCLUSIVE Chorus Flower, 4x INSANE Water Sprinkler</b>" },
+    { "type": "p",  "html": "<b>#3 — 15x ULTIMATE Seeds, 2x EXCLUSIVE Chorus Flower</b>" },
+    { "type": "p",  "html": "Good luck! Winners will be picked on <b>Update next week!</b>" },
+    { "type": "img", "src": "img/post10-img6.PNG" },
+
+    { "type": "h2", "text": "Trading" },
+    { "type": "p",  "html": "Sometimes using the Marketplace isn't the way to go, especially when looking to trade <b>item-for-item.</b>" },
+    { "type": "p",  "html": "You can now trade users with <b>/trade (username)!</b>" },
+    { "type": "img", "src": "img/post10-img9.PNG" },
+
+    { "type": "h2", "text": "Fixed" },
+    { "type": "fixed", "items": [
+      "Shiny Quest exploit",
+      "Silver crate drop chance",
+      "Added click to teleport when 0 durability",
+      "Added view quest in chat when attempting to sell crop needed for shiny quest",
+      "Farmer Mouldroot now only takes Wheat instead of Echoon",
+      "Luxuriant charm items now go to escrow",
+      "Money now resets on rebirth",
+      "Added chat filter external plugin",
+      "Added anticheat",
+      "Added /ft and /fst as aliases for Fast Travel",
+      "Added rebirths leaderboard: /lb:rebirths",
+      "Added gems leaderboard: /lb:gems",
+      "Locked crops no longer show in Rainbow Machine",
+      "Rainbow Machine now requires 64x (a stack) of crops as opposed to 50x",
+      "Removed Farm Pack from store (now limited)",
+      "Season Shop items now show amount of respect given at bottom",
+      "Right-clicking rainbow tokens now opens Rainbow Machine menu",
+      "Pollinated loot table changes",
+      "New automessages"
+    ]},
+
+    { "type": "signoff", "text": "Apologies, this update was a little smaller than usual. Next week: Farm Level and Rebirth reset for Season 2!" }
+  ]
+}

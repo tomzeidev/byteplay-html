@@ -1,0 +1,84 @@
+{
+  "id": "fertilia-update-3",
+  "title": "Fertilia: Update 3",
+  "date": "June 21, 2025",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "The Echoon Crop, Season Shop and more are out now!",
+  "thumb": "img/update-3.PNG",
+  "content": [
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "Private Islands" },
+    { "type": "p",  "html": "Get your very own <b>Private Island!</b>" },
+    { "type": "p",  "html": "Plant the <b>new types of seeds</b> here!" },
+    { "type": "img", "src": "img/post9-img11.PNG" },
+    { "type": "img", "src": "img/post9-img17.PNG" },
+
+    { "type": "h2", "text": "Echoon Seed" },
+    { "type": "p",  "html": "The first seed available for your <b>Private Island!</b>" },
+    { "type": "p",  "html": "The <b>Echoon Seed</b> drops randomly from <b>ANY crop!</b>" },
+    { "type": "img", "src": "img/post9-img10.PNG" },
+
+    { "type": "h2", "text": "Echoon Leaf" },
+    { "type": "p",  "html": "A new <b>mythical item</b> has landed!" },
+    { "type": "p",  "html": "The <b>Echoon Leaf</b> drops from harvesting <b>Echoon Seeds!</b>" },
+    { "type": "p",  "html": "Use these in the new <b>Season Shop!</b>" },
+    { "type": "img", "src": "img/post9-img1.PNG" },
+
+    { "type": "h2", "text": "Season Shop" },
+    { "type": "p",  "html": "The <b>Season Shop</b> contains tons of useful gear and some of the new best items!" },
+    { "type": "p",  "html": "Including <b>RAINBOW Token, Strength and Regen potion and more!</b>" },
+    { "type": "p",  "html": "Stock is individual per-player unlike Travelling Merchant. Restocks every <b>30 minutes!</b>" },
+    { "type": "p",  "html": "Better items require more <b>Respect Points,</b> which are earnt through purchasing items." },
+    { "type": "img", "src": "img/post9-img2.PNG" },
+
+    { "type": "h2", "text": "Shady Merchant" },
+    { "type": "p",  "html": "A secret merchant has <b>revealed itself behind the Barn..</b>" },
+    { "type": "img", "src": "img/post9-img18.PNG" },
+
+    { "type": "h2", "text": "Shulker Boxes!" },
+    { "type": "p",  "html": "<b>Too many items? This is for YOU!</b>" },
+    { "type": "p",  "html": "The Shady Merchant is selling <b>Shulker Boxes</b>, each that can be filled with a certain category of items!" },
+    { "type": "p",  "html": "Potions Shulker — <b>Store all potions</b> — 20,000 Gems" },
+    { "type": "p",  "html": "Wardrobe Shulker — <b>Store armor and weapons</b> — 35,000 Gems" },
+    { "type": "p",  "html": "Item Shulker — <b>Store sprinklers, farming tools and more</b> — 15,000 Gems" },
+    { "type": "img", "src": "img/post9-img3.PNG" },
+    { "type": "img", "src": "img/post9-img5.PNG" },
+    { "type": "img", "src": "img/post9-img6.PNG" },
+
+    { "type": "h2", "text": "Blast Token" },
+    { "type": "p",  "html": "Blast the <b>crop fields!</b>" },
+    { "type": "p",  "html": "Collect Blast Tokens from <b>Travelling Merchant, Season Shop and more!</b>" },
+    { "type": "p",  "html": "When in use, <b>farms 4 crops at once!</b>" },
+    { "type": "img", "src": "img/post9-img8.PNG" },
+
+    { "type": "h2", "text": "Crop Duster" },
+    { "type": "p",  "html": "Yes.. we added the <b>CROP DUSTER!</b>" },
+    { "type": "p",  "html": "These can be found in <b>Season Shop!</b>" },
+    { "type": "p",  "html": "When in use, <b>instantly farm a LARGE RADIUS of crops!</b>" },
+    { "type": "img", "src": "img/post9-img9.PNG" },
+
+    { "type": "h2", "text": "New Charms" },
+    { "type": "p",  "html": "Boost your <b>Private Island!</b> 2 new charms have been added:" },
+    { "type": "p",  "html": "<b>Harvester Fortuna</b> — Chance for doubled items when harvesting Private Island Seeds — obtained from Season Shop" },
+    { "type": "p",  "html": "<b>Spring Harvest</b> — On plant when equipped, seeds on Private Island grow <b>2x faster</b> — obtained from the Season Shop" },
+    { "type": "img", "src": "img/post9-img13.PNG" },
+    { "type": "img", "src": "img/post9-img14.PNG" },
+
+    { "type": "h2", "text": "Global Competition" },
+    { "type": "p",  "html": "Collectively harvest <b>any seeds on Private Islands</b> to contribute!" },
+    { "type": "p",  "html": "Everyone online will receive <b>20x ULTIMATE SEEDS!</b>" },
+    { "type": "img", "src": "img/post9-img16.PNG" },
+
+    { "type": "h2", "text": "Changed" },
+    { "type": "fixed", "items": [
+      "Luxuriant Charm new loot table: 40% - Money Lootbag, 40% - Gem Seed, 20% - Diamond Lootbag"
+    ]},
+
+    { "type": "h2", "text": "Fixed" },
+    { "type": "fixed", "items": ["Various potion lore mismatches"] },
+
+    { "type": "signoff", "text": "Thank you all! Next week: 5000 Unique Joins event!" }
+  ]
+}

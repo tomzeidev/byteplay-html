@@ -1,0 +1,84 @@
+{
+  "id": "fertilia-update-8",
+  "title": "Fertilia: Update 8",
+  "date": "December 21, 2025",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "Christmas Event: Part 2 is here! Fight two new bosses, unlock expensive new weapons, choose your team and much more!",
+  "thumb": "img/update-8.PNG",
+  "content": [
+    { "type": "p", "html": "The <b>Christmas Event: Part 2</b> is here!" },
+    { "type": "p", "html": "Let the <b>FESTIVE CRATE decide YOUR FATE!</b> What team will you get?" },
+
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "Naughty vs Nice" },
+    { "type": "p",  "html": "Open the <b>FESTIVE CRATE</b> to get your team!" },
+    { "type": "p",  "html": "What team will <b>YOU get?</b>" },
+    { "type": "img", "src": "img/post14-img10.PNG" },
+
+    { "type": "h2", "text": "Team Battle" },
+    { "type": "p",  "html": "Farm for your <b>team and battle it out!</b>" },
+    { "type": "p",  "html": "<b>Farm FESTIVE</b> crops to contribute points!" },
+    { "type": "p",  "html": "Every 30 minutes, points are <b>RESET!</b>" },
+    { "type": "p",  "html": "Everyone on the winning team gets the <b>LIMITED FESTIVE GIFT!</b>" },
+    { "type": "p",  "html": "Contains tons of <b>new and limited goodies!</b>" },
+    { "type": "p",  "html": "The losing team will receive a <b>+1% bonus. This will stack until they win again!</b>" },
+    { "type": "img", "src": "img/post14-img9.PNG" },
+
+    { "type": "h2", "text": "Grinch Boss" },
+    { "type": "p",  "html": "<b>Limited drops requiring high skill!</b>" },
+    { "type": "p",  "html": "Can be spawned from the regular boss menu with <b>candycanes!</b>" },
+    { "type": "p",  "html": "The Grinch Boss spawns <b>his minions, his own sleigh</b> and can even <b>STEAL YOUR HELD ITEM (for a limited time!)</b>" },
+    { "type": "p",  "html": "As you progress through the boss stages, the Grinch <b>randomly drops items.</b>" },
+    { "type": "p",  "html": "At the end, the <b>top damager of the boss fight</b> receives <b>extra goodies!</b>" },
+    { "type": "img", "src": "img/post14-img2.PNG" },
+
+    { "type": "h2", "text": "Christmas Staff" },
+    { "type": "p",  "html": "Launch powerful snowballs at <b>enemies</b>!" },
+    { "type": "p",  "html": "This new weapon can be found at the <b>Santa Shop, boss drops and more!</b>" },
+    { "type": "img", "src": "img/post14-img1.PNG" },
+    { "type": "img", "src": "img/post14-img6.GIF" },
+
+    { "type": "h2", "text": "Christmas Battle Axe" },
+    { "type": "p",  "html": "The newest and <b>greatest melee weapon.</b>" },
+    { "type": "p",  "html": "This new weapon can be found at the <b>Santa Shop, boss drops and more!</b>" },
+    { "type": "img", "src": "img/post14-img6.PNG" },
+
+    { "type": "h2", "text": "Advent Elf" },
+    { "type": "p",  "html": "Level up this <b>holiday season!</b>" },
+    { "type": "p",  "html": "Everyday, the <b>Advent Elf</b> moves somewhere on the map." },
+    { "type": "p",  "html": "Claim a free <b>overpowered item everyday!</b>" },
+    { "type": "p",  "html": "Includes <b>candycanes, apple of riches, EXCLUSIVE raffle tickets, crop duster boosters, blast tokens, christmas potions and MUCH MORE!</b>" },
+    { "type": "p",  "html": "Claim items everyday through to <b>Jan 1!</b>" },
+    { "type": "img", "src": "img/post14-img7.PNG" },
+
+    { "type": "h2", "text": "5x Advent Elf" },
+    { "type": "p",  "html": "<b>Cheap, yet incredibly overpowered!</b>" },
+    { "type": "p",  "html": "Purchase the 5x Advent Elf on the server store to receive a <b>TOTAL OF 5 ITEMS EVERYDAY!</b>" },
+    { "type": "p",  "html": "This purchase sits at just <b>$5.99 and stays til Jan 1!</b>" },
+    { "type": "p",  "html": "<b>PLUS:</b> Includes a <b>BONUS Exclusive Chorus Flower AND 3x Exclusive Raffle Tickets!</b>" },
+    { "type": "button", "text": "Click to view", "href": "https://byteplay.tebex.io/package/7175553" },
+    { "type": "img", "src": "img/post14-img8.PNG" },
+
+    { "type": "h2", "text": "Fixed / Changed" },
+    { "type": "fixed", "items": [
+      "Shiny Quest reroll cost 2,000 Gems → 1,000 Gems",
+      "Increased amount of items from Christmas Trees hourly",
+      "Added claim all mail button in Mailbox",
+      "Wither Armor from Wither Skeleton Jockey chances 1% → 10%",
+      "Removed Infinity Hoe, Diamond Delirium from Exclusive Raffle",
+      "Temporarily added some Christmas Armor/Weapons to Exclusive Raffle",
+      "Crop Races should finally pay the winner a Race Crate",
+      "Added Gem and Rebirth leaderboard crown suffixes",
+      "Lightspeed Potion 8x Tier 4 Speed Potion → 6x Tier 4 Speed Potion",
+      "Godluck Potions should now be craftable",
+      "Recoded Potion Combine system from ground up, should be much smoother",
+      "When converting potions in potion combine, lack of space will now go to Escrow",
+      "Tier 4 potion name fixes, old ones will be replaced when in inventory on rejoin",
+      "Added a hard cap to Rainbow Token cost of 64x"
+    ]},
+
+    { "type": "signoff", "text": "A few new things with a lot of fixes!!" }
+  ]
+}

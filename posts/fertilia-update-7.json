@@ -1,0 +1,99 @@
+{
+  "id": "fertilia-update-7",
+  "title": "Fertilia: Update 7",
+  "date": "December 7, 2025",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "Christmas Event: Part 1 is here! Unlock 4 new upgrades, collect decorations for your tree, and farm the new FESTIVE variant for Christmas Coins!",
+  "thumb": "img/update-7.PNG",
+  "content": [
+    { "type": "p", "html": "The <b>Christmas Event: Part 1</b> is here!" },
+
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "Festive Crop Variant" },
+    { "type": "p",  "html": "Farmed <b>globally,</b> the new <b>FESTIVE</b> crop variant is here!" },
+    { "type": "p",  "html": "Selling these yields <b>Christmas Coins!</b>" },
+    { "type": "p",  "html": "The value of these will always be <b>$1,</b> but can be increased by <b>upgrading!</b>" },
+    { "type": "img", "src": "img/post13-img1.PNG" },
+
+    { "type": "h2", "text": "Santa Shop" },
+    { "type": "p",  "html": "Use your limited <b>Christmas Coins here!</b>" },
+    { "type": "p",  "html": "Includes tons of items, including the <b>LIMITED CHRISTMAS Hoe and CHRISTMAS Sword!</b>" },
+    { "type": "p",  "html": "Also includes useful, rare items like <b>Seed Feed, Sprout Bone, Potion Bundles.</b>" },
+    { "type": "img", "src": "img/post13-img16.PNG" },
+
+    { "type": "h2", "text": "Event Items" },
+    { "type": "p",  "html": "The strongest and greatest of <b>weapons and tools!</b>" },
+    { "type": "p",  "html": "The <b>CHRISTMAS Hoe</b> increases chances for Festive crops!" },
+    { "type": "p",  "html": "The <b>CHRISTMAS Sword</b> boasts as a <b>Sharpness IV Netherite Sword!</b>" },
+    { "type": "p",  "html": "This makes it the <b>strongest weapon in FERTILIA!</b>" },
+    { "type": "img", "src": "img/post13-img18.PNG" },
+
+    { "type": "h2", "text": "Candy Canes" },
+    { "type": "p",  "html": "Also drops globally!" },
+    { "type": "p",  "html": "Use <b>candycanes in the new Christmas Upgrades!</b>" },
+    { "type": "img", "src": "img/post13-img2.PNG" },
+
+    { "type": "h2", "text": "Tree Decorations" },
+    { "type": "p",  "html": "Used to <b>decorate your tree!</b>" },
+    { "type": "p",  "html": "Different decorations award more points!" },
+    { "type": "p",  "html": "Christmas Globe — <b>3 points</b>" },
+    { "type": "p",  "html": "Christmas Stocking — <b>12 points</b>" },
+    { "type": "p",  "html": "Christmas Candle — <b>36 points</b>" },
+    { "type": "p",  "html": "Every hour depending on your decoration points, <b>receive TONS OF ITEMS!</b>" },
+    { "type": "img", "src": "img/post13-img3.PNG" },
+    { "type": "img", "src": "img/post13-img4.PNG" },
+    { "type": "img", "src": "img/post13-img5.PNG" },
+
+    { "type": "h2", "text": "Christmas Upgrades" },
+    { "type": "p",  "html": "Boost your way with these <b>limited upgrades!</b>" },
+    { "type": "p",  "html": "Includes decoration drop chance upgrades, santa shop discounts, and <b>christmas coins multi!</b>" },
+    { "type": "p",  "html": "You'll want tons of <b>candycanes</b> for these!" },
+    { "type": "img", "src": "img/post13-img15.PNG" },
+
+    { "type": "h2", "text": "Mailbox" },
+    { "type": "p",  "html": "A new feature fit for the <b>holiday season!</b>" },
+    { "type": "p",  "html": "Send items to your friends or foes, even when <b>they're offline!</b>" },
+    { "type": "p",  "html": "You may hold up to <b>40 items</b> in your mailbox before it gets full." },
+    { "type": "img", "src": "img/post13-img6.PNG" },
+    { "type": "img", "src": "img/post13-img7.PNG" },
+
+    { "type": "h2", "text": "Santa's Presents" },
+    { "type": "p",  "html": "He's filling up <b>YOUR MAILBOX!</b>" },
+    { "type": "p",  "html": "Every 30 minutes, santa is sending presents to your mailbox!" },
+    { "type": "img", "src": "img/post13-img8.PNG" },
+
+    { "type": "h2", "text": "Leaderboard Rewards!" },
+    { "type": "p",  "html": "The first <b>MEDALLION CHARM</b> of this season!" },
+    { "type": "p",  "html": "Most decorated trees for the whole week will be given <b>SPECIAL REWARDS!</b>" },
+    { "type": "p",  "html": "#1 — <b>MEDALLION charm, 6x Exclusive Chorus Flower</b>" },
+    { "type": "p",  "html": "#2 — <b>SYNTHESIS charm, 20x Enchant Relic, 3x Exclusive Chorus Flower, 4x INSANE Water Sprinkler</b>" },
+    { "type": "p",  "html": "#3 — <b>15x Enchant Relic, 2x Exclusive Chorus Flower</b>" },
+    { "type": "img", "src": "img/post13-img11.PNG" },
+
+    { "type": "h2", "text": "Christmas Potions" },
+    { "type": "p",  "html": "Useful to boost your way through <b>the event!</b>" },
+    { "type": "img", "src": "img/post13-img13.PNG" },
+    { "type": "img", "src": "img/post13-img14.PNG" },
+
+    { "type": "h2", "text": "Christmas Coin Lootbag" },
+    { "type": "p",  "html": "Contains tons of <b>Christmas Coins and limited items!</b>" },
+    { "type": "p",  "html": "Can be found in <b>Travelling Merchant, hourly tree decoration rewards, Exclusive Raffle and random drops!</b>" },
+    { "type": "p",  "html": "When obtained from random drops, it'll be announced in <b>GLOBAL CHAT!</b>" },
+    { "type": "img", "src": "img/post13-img17.PNG" },
+
+    { "type": "h2", "text": "Fixed" },
+    { "type": "fixed", "items": [
+      "Mini Bags can now be bulk opened with Sneak + Right Click",
+      "Infinity Hoe can no longer be enchanted",
+      "Exotic Fruit Tier 7 trade now gives 2x Bastion Fruit seed instead of 1",
+      "Halved price of Crop Duster in Exotic Fruits",
+      "Welcome reward is now mailbox instead of a chat message",
+      "Rustic enchant now works as intended",
+      "Changed Igneous variant table to Burnt: 70%, Molten 30%"
+    ]},
+
+    { "type": "signoff", "text": "Good luck! Christmas Event Part 2 next week!" }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "id": "fertilia-update-1",
+  "title": "Fertilia: Update 1",
+  "date": "June 6, 2025",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "Check out the new island, new crop, charms, pvp crates and much more!",
+  "thumb": "img/update-1.PNG",
+  "content": [
+    { "type": "p", "html": "Get your swords ready, its time for the <b>PVP UPDATE!</b>" },
+    { "type": "p", "html": "We've jammed in so much content this update, we hope <b>EVERYONE</b> can enjoy this!" },
+
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "PVP Island" },
+    { "type": "p",  "html": "It's time for a new island! Only accessible from the portal at spawn, on entering you'll be <b>thrown into the action!</b>" },
+    { "type": "p",  "html": "<b>PVP is always enabled, except for when bosses are active.</b>" },
+    { "type": "p",  "html": "When dying, you'll only lose PVP-related items like <b>armor, swords, axes and bows.</b>" },
+    { "type": "p",  "html": "Farming Tools and Crops will be returned to you when you respawn!" },
+    { "type": "img", "src": "img/post7-img1.PNG" },
+    { "type": "img", "src": "img/post7-img2.PNG" },
+
+    { "type": "h2", "text": "Bosses" },
+    { "type": "p",  "html": "The PVP Island isn't empty.. something needs to be <b>awakened!</b>" },
+    { "type": "p",  "html": "The new <b>Minotaur</b> boss can only be spawned with the new <b>Nether Wart</b> crops!" },
+    { "type": "p",  "html": "Anyone can contribute to the <b>Global Boss Machine.</b> Once 100 are added, the <b>boss will summon.</b>" },
+    { "type": "p",  "html": "On boss death, chance to drop the <b>new Warrior charm!</b>" },
+    { "type": "img", "src": "img/post7-img4.PNG" },
+    { "type": "img", "src": "img/post7-img3.PNG" },
+
+    { "type": "h2", "text": "New Crop" },
+    { "type": "p",  "html": "Finally.. a new <b>CROP!</b>" },
+    { "type": "p",  "html": "Only obtained on the surrounds of the <b>PVP Island,</b> the <b>Nether Wart</b> has low respawn times." },
+    { "type": "p",  "html": "Good luck fighting your enemies for this expensive new crop!" },
+    { "type": "img", "src": "img/post7-img5.PNG" },
+
+    { "type": "h2", "text": "New Crates" },
+    { "type": "p",  "html": "Introducing.. <b>3 new crates!</b> Containing <b>TONS</b> of useful PVP-gear!" },
+    { "type": "p",  "html": "<b>Bronze Crate:</b> Chance to drop when farming <b>Wheat crop</b>" },
+    { "type": "p",  "html": "<b>Silver Crate:</b> Chance to drop when farming <b>Carrot crop,</b> also by combining <b>3x Bronze Crates</b>" },
+    { "type": "p",  "html": "<b>Crystal Crate:</b> Chance to drop when farming <b>Beetroot crop,</b> also by combining <b>4x Silver Crates</b>" },
+    { "type": "img", "src": "img/post7-img8.PNG" },
+    { "type": "img", "src": "img/post7-img9.PNG" },
+    { "type": "img", "src": "img/post7-img10.PNG" },
+
+    { "type": "h2", "text": "Charms" },
+    { "type": "p",  "html": "Introducing.. <b>CHARMS</b>, now with 3 total slots!" },
+    { "type": "p",  "html": "Slot 1: <b>Free</b> | Slot 2: <b>Unlocks at Rebirth 1</b> | Slot 3: <b>Unlocks at Rebirth 3</b>" },
+    { "type": "p",  "html": "This update alone brings <b>6 new unique charms</b> to collect:" },
+    { "type": "p",  "html": "<b>Luxuriant</b> — Chance to receive a Diamond or Money Lootbag every minute" },
+    { "type": "p",  "html": "<b>Glittering</b> — Chance to randomly get 5-15 Gems every minute — reward for playing 24 consecutive hours" },
+    { "type": "p",  "html": "<b>Warrior</b> — Chance to get Strength I for 20 seconds on kill — drops from the new Minotaur boss" },
+    { "type": "p",  "html": "<b>Shiny Hunter</b> — <b>DRASTICALLY</b> increases your chances at getting Shiny Crops" },
+    { "type": "p",  "html": "<b>Medallion</b> — Chance for crops to <b>INSTANTLY CLONE</b> — reward for leaderboards and competitions" },
+    { "type": "p",  "html": "<b>Diamond Delirium</b> — All diamond drops are <b>DOUBLED</b>" },
+    { "type": "img", "src": "img/post7-img13.PNG" },
+    { "type": "img", "src": "img/post7-img14.PNG" },
+    { "type": "img", "src": "img/post7-img15.PNG" },
+    { "type": "img", "src": "img/post7-img16.PNG" },
+    { "type": "img", "src": "img/post7-img17.PNG" },
+
+    { "type": "h2", "text": "Playtime Rewards" },
+    { "type": "p",  "html": "Even more rewards.. <b>for literally just playing?!</b>" },
+    { "type": "p",  "html": "Enjoy extra rewards for playing the server! Be warned though, your progress <b>resets</b> if you disconnect or rejoin!" },
+    { "type": "p",  "html": "The ultimate reward for 24 <b>consecutive</b> hours: the <b>GLITTERING CHARM!</b>" },
+    { "type": "img", "src": "img/post7-img23.PNG" },
+
+    { "type": "h2", "text": "Changed" },
+    { "type": "fixed", "items": [
+      "Farm Growth is now handled client-sided, allowing large amounts of concurrent players to farm the same areas at once",
+      "Composter now works at about 75% efficiency when offline",
+      "The item limit on your Escrow is now dynamic based on Farm Level"
+    ]},
+
+    { "type": "h2", "text": "Fixed" },
+    { "type": "fixed", "items": [
+      "Several fixes to Travelling Merchant message hexcode issues",
+      "Gem Hoe is now available for purchase in the Travelling Merchant, tiers 2-3",
+      "/paymoney command is now removed. Use /paygems.",
+      "Reaching Crop Milestones now gives 1x Vote Crate",
+      "Cocktail Essence are now obtainable from a small chance when farming any crop",
+      "Combine all button in potion combine menu no longer has potions mastery 10 requirement",
+      "Updated Season 1 NPC to clarify the server is not resetting",
+      "You can no longer drop Locked Items",
+      "Added a chat filter"
+    ]},
+
+    { "type": "signoff", "text": "Thank you for absolutely shattering ALL of BytePlay's records to date. Cheers to even more!" }
+  ]
+}
