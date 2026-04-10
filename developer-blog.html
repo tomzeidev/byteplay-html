@@ -46,14 +46,17 @@
     }
 
     /* ── Filter bar ──────────────────────────────── */
-    .filter-bar {
+    .filter-bar-wrap {
       position: sticky;
-      top: 64px; /* sits below the sticky header */
+      top: 64px;
       z-index: 50;
       background: rgba(255,255,255,0.95);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid #e5e7eb;
+    }
+
+    .filter-bar {
       padding: 0 2rem;
       display: flex;
       align-items: center;
@@ -260,11 +263,67 @@
     .post[data-hidden="true"],
     .post-group[data-hidden="true"] { display: none; }
 
+    /* ── Filter bar scroll hint ──────────────────── */
+    .filter-bar-wrap::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0;
+      width: 40px;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.95));
+      pointer-events: none;
+    }
+
     @media (max-width: 600px) {
-      .filter-bar { padding: 0 1rem; }
-      .blog-posts  { padding: 1.6rem 1rem 3rem; }
-      .post-thumb  { width: 80px; height: 56px; }
-      .post-content h2 { font-size: 0.95rem; white-space: normal; }
+      /* Filter bar: tighter padding + smaller text so more tabs are visible */
+      .filter-bar {
+        padding: 0 0.6rem;
+        gap: 2px;
+        top: 0; /* positioning now handled by wrapper */
+      }
+
+      .filter-btn {
+        padding: 10px 10px;
+        font-size: 0.78rem;
+        gap: 5px;
+      }
+
+      .filter-count {
+        min-width: 16px;
+        height: 16px;
+        font-size: 0.62rem;
+        padding: 0 4px;
+      }
+
+      .blog-posts { padding: 1.6rem 1rem 3rem; }
+
+      /* Post card: stack to column, centre everything */
+      .post {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .post-thumb {
+        width: 100%;
+        max-width: 320px;
+        height: 120px;
+        object-fit: cover;
+      }
+
+      .post-content { width: 100%; }
+
+      .post-meta {
+        justify-content: center;
+      }
+
+      .post-content h2 {
+        font-size: 0.95rem;
+        white-space: normal;
+      }
+
+      .post-content .excerpt { text-align: center; }
+
+      .read-more { justify-content: center; }
     }
 
     .filter-btn[data-cat="timekits"].active        { color: #ea580c; border-bottom-color: #ea580c; }
@@ -302,13 +361,15 @@
   </section>
 
   <!-- FILTER BAR -->
+  <div class="filter-bar-wrap">
   <div class="filter-bar" role="tablist" aria-label="Filter posts by category">
     <button class="filter-btn active" data-cat="all"           role="tab" aria-selected="true">All posts   <span class="filter-count" id="count-all">17</span></button>
     <button class="filter-btn"        data-cat="fertilia"      role="tab" aria-selected="false">Fertilia    <span class="filter-count" id="count-fertilia">9</span></button>
     <button class="filter-btn"        data-cat="cab"           role="tab" aria-selected="false">Collect All Blocks <span class="filter-count" id="count-cab">5</span></button>
     <button class="filter-btn"        data-cat="announcements" role="tab" aria-selected="false">Announcements <span class="filter-count" id="count-announcements">2</span></button>
     <button class="filter-btn"        data-cat="timekits"      role="tab" aria-selected="false">TimeKits <span class="filter-count" id="count-timekits">1</span></button>
-  </div>
+  </div><!-- /filter-bar -->
+  </div><!-- /filter-bar-wrap -->
 
   <!-- POSTS -->
   <section class="blog-posts" id="blog-posts">
