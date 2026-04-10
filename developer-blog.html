@@ -266,6 +266,11 @@
       .post-thumb  { width: 80px; height: 56px; }
       .post-content h2 { font-size: 0.95rem; white-space: normal; }
     }
+
+    .filter-btn[data-cat="timekits"].active        { color: #ea580c; border-bottom-color: #ea580c; }
+    .filter-btn[data-cat="timekits"].active .filter-count { background: rgba(234,88,12,0.1); color: #ea580c; }
+    .post-group-label.label-timekits  { color: #ea580c; border-color: rgba(234,88,12,0.3); background: rgba(234,88,12,0.06); }
+    .tag-timekits { color: #ea580c; border-color: rgba(234,88,12,0.3); background: rgba(234,88,12,0.07); }
   </style>
 </head>
 <body>
@@ -298,10 +303,11 @@
 
   <!-- FILTER BAR -->
   <div class="filter-bar" role="tablist" aria-label="Filter posts by category">
-    <button class="filter-btn active" data-cat="all"           role="tab" aria-selected="true">All posts   <span class="filter-count" id="count-all">16</span></button>
+    <button class="filter-btn active" data-cat="all"           role="tab" aria-selected="true">All posts   <span class="filter-count" id="count-all">17</span></button>
     <button class="filter-btn"        data-cat="fertilia"      role="tab" aria-selected="false">Fertilia    <span class="filter-count" id="count-fertilia">9</span></button>
     <button class="filter-btn"        data-cat="cab"           role="tab" aria-selected="false">Collect All Blocks <span class="filter-count" id="count-cab">5</span></button>
     <button class="filter-btn"        data-cat="announcements" role="tab" aria-selected="false">Announcements <span class="filter-count" id="count-announcements">2</span></button>
+    <button class="filter-btn"        data-cat="timekits"      role="tab" aria-selected="false">TimeKits <span class="filter-count" id="count-timekits">1</span></button>
   </div>
 
   <!-- POSTS -->
@@ -315,7 +321,7 @@
         <div class="post-group-line"></div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-12-28">
         <img class="post-thumb" src="img/update-9.PNG" alt="Fertilia Update 9">
         <div class="post-content">
           <div class="post-meta">
@@ -328,7 +334,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-12-21">
         <img class="post-thumb" src="img/update-8.PNG" alt="Fertilia Update 8">
         <div class="post-content">
           <div class="post-meta">
@@ -341,7 +347,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-12-07">
         <img class="post-thumb" src="img/update-7.PNG" alt="Fertilia Update 7">
         <div class="post-content">
           <div class="post-meta">
@@ -354,7 +360,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-12-01">
         <img class="post-thumb" src="img/update-6.PNG" alt="Fertilia Update 6">
         <div class="post-content">
           <div class="post-meta">
@@ -367,7 +373,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-07-05">
         <img class="post-thumb" src="img/update-5.PNG" alt="Fertilia Update 5">
         <div class="post-content">
           <div class="post-meta">
@@ -380,7 +386,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-06-28">
         <img class="post-thumb" src="img/update-4.PNG" alt="Fertilia Update 4">
         <div class="post-content">
           <div class="post-meta">
@@ -393,7 +399,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-06-21">
         <img class="post-thumb" src="upd3.PNG" alt="Fertilia Update 3">
         <div class="post-content">
           <div class="post-meta">
@@ -406,7 +412,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-06-14">
         <img class="post-thumb" src="shiny%20update.PNG" alt="Fertilia Update 2">
         <div class="post-content">
           <div class="post-meta">
@@ -419,7 +425,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="fertilia">
+      <div class="post" data-cat="fertilia" data-date="2025-06-06">
         <img class="post-thumb" src="netherwart.png" alt="Fertilia Update 1">
         <div class="post-content">
           <div class="post-meta">
@@ -441,7 +447,7 @@
         <div class="post-group-line"></div>
       </div>
 
-      <div class="post" data-cat="cab">
+      <div class="post" data-cat="cab" data-date="2024-12-16">
         <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 4">
         <div class="post-content">
           <div class="post-meta">
@@ -454,7 +460,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="cab">
+      <div class="post" data-cat="cab" data-date="2024-12-01">
         <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 3">
         <div class="post-content">
           <div class="post-meta">
@@ -467,7 +473,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="cab">
+      <div class="post" data-cat="cab" data-date="2024-11-25">
         <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 2">
         <div class="post-content">
           <div class="post-meta">
@@ -480,7 +486,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="cab">
+      <div class="post" data-cat="cab" data-date="2024-11-14">
         <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Update 1">
         <div class="post-content">
           <div class="post-meta">
@@ -493,7 +499,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="cab">
+      <div class="post" data-cat="cab" data-date="2024-11-09">
         <img class="post-thumb" src="byteplay.png" alt="Collect All Blocks Announcement">
         <div class="post-content">
           <div class="post-meta">
@@ -515,7 +521,7 @@
         <div class="post-group-line"></div>
       </div>
 
-      <div class="post" data-cat="announcements">
+      <div class="post" data-cat="announcements" data-date="2025-06-06">
         <img class="post-thumb" src="byteplay.png" alt="Re-branding Announcement">
         <div class="post-content">
           <div class="post-meta">
@@ -528,7 +534,7 @@
         </div>
       </div>
 
-      <div class="post" data-cat="announcements">
+      <div class="post" data-cat="announcements" data-date="2024-12-22">
         <img class="post-thumb" src="cherry.png" alt="Nova Cherry Ring">
         <div class="post-content">
           <div class="post-meta">
@@ -541,6 +547,29 @@
         </div>
       </div>
     </div><!-- /group announcements -->
+
+
+    <!-- ── TIMEKITS ─────────────────────────────── -->
+    <div class="post-group" data-group="timekits">
+      <div class="post-group-heading">
+        <div class="post-group-line"></div>
+        <span class="post-group-label label-timekits">TimeKits</span>
+        <div class="post-group-line"></div>
+      </div>
+
+      <div class="post" data-cat="timekits" data-date="2026-04-10">
+        <img class="post-thumb" src="timekits.png" alt="TimeKits Announcement">
+        <div class="post-content">
+          <div class="post-meta">
+            <span class="post-cat-tag tag-timekits">TimeKits</span>
+            <span class="post-date">April 10, 2026</span>
+          </div>
+          <h2>TimeKits — Coming Soon!</h2>
+          <p class="excerpt">A new server is on the horizon. RandomKits PvP with a timed twist — kill to survive, survive to play.</p>
+          <a href="post.html?id=timekits-announcement" class="read-more">Read More →</a>
+        </div>
+      </div>
+    </div><!-- /group timekits -->
 
     <!-- Empty state -->
     <div class="posts-empty" id="posts-empty">
@@ -584,24 +613,51 @@
       if (el) el.textContent = n;
     });
 
+    // Flat sorted container for "All posts" view
+    const postsSection = document.getElementById('blog-posts');
+    const flatList = document.createElement('div');
+    flatList.id = 'flat-list';
+    flatList.style.display = 'none';
+    postsSection.insertBefore(flatList, postsSection.firstChild);
+
     function applyFilter(cat) {
-      let visiblePosts = 0;
+      if (cat === 'all') {
+        // Hide grouped sections
+        groups.forEach(g => { g.style.display = 'none'; });
 
-      posts.forEach(post => {
-        const show = cat === 'all' || post.dataset.cat === cat;
-        post.style.display = show ? '' : 'none';
-        if (show) visiblePosts++;
-      });
+        // Sort all posts newest → oldest
+        const sorted = Array.from(posts).sort((a, b) =>
+          new Date(b.dataset.date) - new Date(a.dataset.date)
+        );
 
-      // Hide group headings when all their posts are hidden
-      groups.forEach(group => {
-        const groupCat = group.dataset.group;
-        const show = cat === 'all' || cat === groupCat;
-        group.style.display = show ? '' : 'none';
-      });
+        // Render clones into flat list
+        flatList.innerHTML = '';
+        sorted.forEach(post => flatList.appendChild(post.cloneNode(true)));
+        flatList.style.display = '';
+        empty.style.display = sorted.length === 0 ? 'block' : 'none';
 
-      empty.style.display = visiblePosts === 0 ? 'block' : 'none';
+      } else {
+        // Restore grouped view
+        flatList.style.display = 'none';
+        flatList.innerHTML = '';
+
+        let visiblePosts = 0;
+        posts.forEach(post => {
+          const show = post.dataset.cat === cat;
+          post.style.display = show ? '' : 'none';
+          if (show) visiblePosts++;
+        });
+
+        groups.forEach(group => {
+          group.style.display = group.dataset.group === cat ? '' : 'none';
+        });
+
+        empty.style.display = visiblePosts === 0 ? 'block' : 'none';
+      }
     }
+
+    // Apply on load
+    applyFilter('all');
 
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {

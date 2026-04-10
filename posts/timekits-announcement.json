@@ -1,0 +1,31 @@
+{
+  "id": "timekits-announcement",
+  "title": "TimeKits — Coming Soon!",
+  "date": "April 10, 2026",
+  "category": "timekits",
+  "author": "BYTE Play Devs",
+  "excerpt": "A new server is on the horizon. RandomKits PvP with a timed twist — kill to survive, survive to play.",
+  "thumb": "timekits.png",
+  "content": [
+    { "type": "p", "html": "We're officially announcing our next project: <b>TimeKits.</b>" },
+    { "type": "p", "html": "More details are coming closer to launch. For now, here's what we can share." },
+
+    { "type": "h2", "text": "What is TimeKits?" },
+    { "type": "p",  "html": "TimeKits is a <b>RandomKits PvP</b> server — you drop in with a random kit, no choice, no preparation." },
+    { "type": "p",  "html": "The twist: <b>you have a timer.</b> Run out of time and you're out." },
+    { "type": "p",  "html": "Every kill you land <b>adds time back to the clock.</b> Stop killing and the clock catches up with you." },
+    { "type": "p",  "html": "It rewards aggression and punishes passive play in a way that standard kit PvP never does." },
+
+    { "type": "h2", "text": "What we can confirm" },
+    { "type": "p",  "html": "<b>Format:</b> RandomKits PvP, free-for-all" },
+    { "type": "p",  "html": "<b>Status:</b> In active development" },
+    { "type": "p",  "html": "<b>Release date:</b> To be announced" },
+
+    { "type": "h2", "text": "Stay in the loop" },
+    { "type": "p",  "html": "All updates will be posted here and announced in our Discord first." },
+    { "type": "p",  "html": "Join the server to get notified the moment we go live." },
+    { "type": "button", "text": "Join the Discord", "href": "https://discord.gg/a9eG98AweD" },
+
+    { "type": "signoff", "text": "More soon. Watch this space." }
+  ]
+}

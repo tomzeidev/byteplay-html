@@ -93,6 +93,7 @@
     .tag-fertilia      { color: #16a34a; border-color: rgba(22,163,74,0.3);   background: rgba(22,163,74,0.07); }
     .tag-cab           { color: #7c3aed; border-color: rgba(124,58,237,0.3);  background: rgba(124,58,237,0.07); }
     .tag-announcements { color: #d97706; border-color: rgba(217,119,6,0.3);   background: rgba(217,119,6,0.07); }
+    .tag-timekits      { color: #ea580c; border-color: rgba(234,88,12,0.3);   background: rgba(234,88,12,0.07); }
 
     .post-hero-date {
       font-size: 0.82rem;
@@ -219,12 +220,19 @@
     .post-nav {
       max-width: 740px;
       margin: 0 auto;
-      padding: 0 2rem 3rem;
+      padding: 2rem 2rem 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+      border-top: 1px solid #f3f4f6;
+    }
+
+    .post-nav-links {
       display: flex;
       justify-content: space-between;
+      width: 100%;
       gap: 1rem;
-      border-top: 1px solid #f3f4f6;
-      padding-top: 2rem;
     }
 
     .post-nav-link {
@@ -254,6 +262,28 @@
     }
 
     .post-nav-link:hover .post-nav-title { color: #111; }
+
+    /* Return to Blog */
+    .post-nav-return {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #6b7280;
+      padding: 10px 20px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+      text-decoration: none;
+      margin: 0 auto;
+    }
+
+    .post-nav-return:hover {
+      color: var(--accent2);
+      border-color: var(--accent2);
+      background: rgba(28,135,201,0.05);
+    }
 
     @media (max-width: 600px) {
       .post-hero  { padding: 3rem 1.2rem 2rem; }
@@ -322,6 +352,7 @@
     // ── Post registry ──────────────────────────────
     // Add new posts here in chronological order (newest first)
     const POST_REGISTRY = [
+      'timekits-announcement',
       'fertilia-update-9',
       'fertilia-update-8',
       'fertilia-update-7',
@@ -335,12 +366,12 @@
 
     // ── Category tag class ─────────────────────────
     function catClass(cat) {
-      const map = { fertilia: 'tag-fertilia', cab: 'tag-cab', announcements: 'tag-announcements' };
+      const map = { fertilia: 'tag-fertilia', cab: 'tag-cab', announcements: 'tag-announcements', timekits: 'tag-timekits' };
       return map[cat] || 'tag-fertilia';
     }
 
     function catLabel(cat) {
-      const map = { fertilia: 'Fertilia', cab: 'Collect All Blocks', announcements: 'Announcement' };
+      const map = { fertilia: 'Fertilia', cab: 'Collect All Blocks', announcements: 'Announcement', timekits: 'TimeKits' };
       return map[cat] || cat;
     }
 
@@ -400,21 +431,23 @@
         // Render body
         document.getElementById('post-body').innerHTML = renderBlocks(post.content);
 
-        // Render prev/next nav
+        // Render prev/next nav + return button
         const idx = POST_REGISTRY.indexOf(id);
-        let navHTML = '';
+        let prevNext = '';
         if (idx < POST_REGISTRY.length - 1) {
-          navHTML += `<a href="post.html?id=${POST_REGISTRY[idx + 1]}" class="post-nav-link prev">
+          prevNext += `<a href="post.html?id=${POST_REGISTRY[idx + 1]}" class="post-nav-link prev">
             <span class="post-nav-label">← Previous</span>
             <span class="post-nav-title">${POST_REGISTRY[idx + 1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
           </a>`;
         }
         if (idx > 0) {
-          navHTML += `<a href="post.html?id=${POST_REGISTRY[idx - 1]}" class="post-nav-link next">
+          prevNext += `<a href="post.html?id=${POST_REGISTRY[idx - 1]}" class="post-nav-link next">
             <span class="post-nav-label">Next →</span>
             <span class="post-nav-title">${POST_REGISTRY[idx - 1].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}</span>
           </a>`;
         }
+        const navHTML = (prevNext ? `<div class="post-nav-links">${prevNext}</div>` : '')
+          + `<a href="developer-blog.html" class="post-nav-return">← Return to Blog</a>`;
         document.getElementById('post-nav').innerHTML = navHTML;
 
         // Show post, hide loading
