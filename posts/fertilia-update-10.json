@@ -1,0 +1,64 @@
+{
+  "id": "fertilia-update-10",
+  "title": "Fertilia: Update 10",
+  "date": "June 20, 2026",
+  "category": "fertilia",
+  "author": "BYTE Play Devs",
+  "excerpt": "The Chroma Jar Event is here! Collect flowers, mix them in the jar, and get a custom colored armor set!",
+  "thumb": "img/update-10.PNG",
+  "content": [
+    { "type": "p", "html": "<b>We're back for SUMMER!</b>" },
+    { "type": "p", "html": "Give us some time to fix some <b>bugs.</b>" },
+
+    { "type": "h2", "text": "Added" },
+
+    { "type": "h2", "text": "Chroma Jar" },
+    { "type": "p",  "html": "Located next to the leaderboards!" },
+    { "type": "p",  "html": "Fill the jar with flowers, watch your armor color change!" },
+    { "type": "img", "src": "img/post16-img1.PNG" },
+
+    { "type": "h2", "text": "Chroma Jar NPC" },
+    { "type": "p",  "html": "View your jar contents, exact hex code of your jar and <b>claim your custom armor!</b>" },
+    { "type": "p",  "html": "Depending on the color of your jar, you'll receive different colors!" },
+    { "type": "img", "src": "img/post16-img2.PNG" },
+    { "type": "img", "src": "img/post16-img3.PNG" },
+
+    { "type": "h2", "text": "Chroma Armor" },
+    { "type": "p",  "html": "Comes with <b>Protection 4 and is UNBREAKABLE!</b>" },
+    { "type": "p",  "html": "Once you've filled your jar with 100+ flowers, instantly get a full set!" },
+    { "type": "p",  "html": "Stats have been modified to copy <b>Diamond Armor.</b>" },
+    { "type": "p",  "html": "Your jar resets once claimed, allowing you to create a <b>whole new color!</b>" },
+    { "type": "img", "src": "img/post16-img4.PNG" },
+    { "type": "img", "src": "img/post16-img5.PNG" },
+
+    { "type": "h2", "text": "Flowers" },
+    { "type": "p",  "html": "How else do you add color to your jar?" },
+    { "type": "p",  "html": "20 flowers types are available, dropping globally from <b>all crops!</b>" },
+    { "type": "p",  "html": "From <b>bright reds to dark greens,</b> the color combinations are endless!" },
+    { "type": "p",  "html": "They are also split into rarities: <b>common, uncommon and rare!</b>" },
+    { "type": "img", "src": "img/post16-img6.PNG" },
+    { "type": "img", "src": "img/post16-img7.PNG" },
+
+    { "type": "h2", "text": "Bloomdust Currency" },
+    { "type": "p",  "html": "A huge shakeup to <b>FERTILIA!</b>" },
+    { "type": "p",  "html": "<b>Bloomdust</b> can be primarily purchased from the <b>Server Store</b>, replacing all old purchases!" },
+    { "type": "p",  "html": "You can also obtain them from other <b>free-to-play</b> ways such as <b>rebirthing!</b>" },
+    { "type": "p",  "html": "These can be used in the new <b>Bloomdust Shop!</b>" },
+    { "type": "p",  "html": "You may notice some familar things like <b>VIP, Sprinkler Pack and other old shop items!</b>" },
+    { "type": "img", "src": "img/post16-img8.PNG" },
+
+    { "type": "h2", "text": "New Marketplace" },
+    { "type": "p",  "html": "<b>List as many items as you want!</b>" },
+    { "type": "p",  "html": "The new marketplace functions the same as before, but now improved!" },
+    { "type": "p",  "html": "You can now list multiple items, and manage them all in one place!" },
+    { "type": "img", "src": "img/post16-img9.PNG" },
+
+    { "type": "h2", "text": "Fixed / Changed" },
+    { "type": "fixed", "items": [
+      "Rainbow Hunter charm chance from Rainbow Machine 0.5% → 2%",
+      "Chaotic: 0.5% chance to destroy tool → 0.5% chance to destroy 1/4 durability of tool"
+    ]},
+
+    { "type": "signoff", "text": "Let's see what we can do! See you soon!" }
+  ]
+}
