@@ -1306,3 +1306,38 @@ a:focus-visible, button:focus-visible { outline: 3px solid #1c87c9; outline-offs
 .fertilia-connect { background: #e4effa; border: 1px solid #cedfee; border-radius: 8px; padding: 24px 30px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 18px; }.fertilia-connect>div { display: flex; flex-direction: column; gap: 6px; }.fertilia-connect .server-address { color: #101e30; font-size: 18px; margin: 0; }.fertilia-connect #copy-feedback { width: 100%; color: #17618c; margin: 0; min-height: 0; }.fertilia-connect #copy-feedback:empty { display: none; }
 @media(max-width:768px) { .immersive-opening .studio-intro { min-height: 580px; padding-block: 54px; }.studio-home .main-header nav { border-color: #26364c; }.studio-home .main-header nav a { border-color: #26364c; }.fertilia-section { padding-top: 44px; }.fertilia-heading { align-items: start; }.fertilia-heading .eyebrow { font-size: 9px; }.fertilia-live { font-size: 10px; }.fertilia-layout { grid-template-columns: 1fr; gap: 36px; padding-block: 32px; }.fertilia-connect { padding: 22px; }.fertilia-connect .server-address { font-size: 15px; } }
 .studio-ticker b svg { display: inline-block; vertical-align: middle; }
+/* Motion follows the page, while all content stays readable without JavaScript. */
+html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+.motion-reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s ease var(--reveal-delay,0ms), transform .8s cubic-bezier(.2,.65,.3,1) var(--reveal-delay,0ms); }
+.motion-reveal.is-visible { opacity: 1; transform: translateY(0); }
+.immersive-opening { overflow: hidden; }
+.immersive-opening::before { inset: -100px 0; transform: translateY(var(--scene-offset,0px)); }
+.main-header { transition: box-shadow .3s ease; }
+.main-header.has-scrolled { box-shadow: 0 8px 30px rgba(0,12,30,.2); }
+.studio-ticker { position: relative; padding: 20px 0; }
+.ticker-track { display: flex; width: max-content; animation: studio-marquee 36s linear infinite; }
+.ticker-group { display: flex; flex-shrink: 0; align-items: center; gap: 40px; padding-right: 40px; }
+.studio-ticker .ticker-group span { width: auto; font-size: 18px; letter-spacing: .08em; word-spacing: normal; }
+.ticker-group svg { color: #1c87c9; flex-shrink: 0; }
+.ticker-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: #101e30; color: #fff; border: 0; border-radius: 5px; padding: 8px 12px; font: 500 11px 'Outfit',sans-serif; cursor: pointer; }
+.studio-ticker.is-paused .ticker-track, .studio-ticker:focus-within .ticker-track, .studio-ticker:hover .ticker-track { animation-play-state: paused; }
+@keyframes studio-marquee { to { transform: translateX(-50%); } }
+.studio-game { transition: translate .3s ease; }
+.studio-game:hover { translate: 0 -6px; }
+.game-arrow, .text-link .studio-arrow, .note-arrow { transition: transform .3s ease; }
+.studio-game:hover .game-arrow { transform: rotate(45deg); }
+.text-link:hover .studio-arrow, .note-row:hover .note-arrow { transform: translate(3px,-3px); }
+.note-row { transition: background .3s ease, padding .3s ease; }
+.note-row:hover { background: #e8f2fb; padding-inline: 12px; }
+.hiring-spark { animation: studio-spin 48s linear infinite; }
+@keyframes studio-spin { to { transform: rotate(360deg); } }
+.fertilia-live i { animation: studio-beacon 2.5s ease-in-out infinite; }
+@keyframes studio-beacon { 50% { box-shadow: 0 0 0 6px rgba(71,198,252,.18); } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .motion-reveal { opacity: 1; transform: none; }
+  .immersive-opening::before { transform: none; }
+  .ticker-track, .hiring-spark, .fertilia-live i { animation: none; }
+  .ticker-toggle { display: none; }
+  .studio-game:hover { translate: none; }
+}
