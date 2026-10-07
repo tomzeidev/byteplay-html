@@ -704,7 +704,12 @@
 
         // Render clones into flat list
         flatList.innerHTML = '';
-        sorted.forEach(post => flatList.appendChild(post.cloneNode(true)));
+        sorted.forEach(post => {
+          const clone = post.cloneNode(true);
+          // Category filtering hides originals; clones must be visible in All.
+          clone.style.removeProperty('display');
+          flatList.appendChild(clone);
+        });
         flatList.style.display = '';
         empty.style.display = sorted.length === 0 ? 'block' : 'none';
 
