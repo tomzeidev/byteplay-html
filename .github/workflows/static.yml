@@ -33,11 +33,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Prepare public site
+        run: python3 backend/prepare_pages.py "$RUNNER_TEMP/byteplay-public"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload only public website files
+          path: ${{ runner.temp }}/byteplay-public
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

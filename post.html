@@ -17,6 +17,8 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
+  <script src="cms-config.js"></script>
+  <script src="blog-api.js"></script>
   <style>
     body { background: #fff; color: #1a1a1a; }
 
@@ -405,6 +407,13 @@
       'fertilia-update-1'
     ];
 
+    const escapeText = value => String(value ?? '').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));
+    let publishedPosts = null;
+    async function getPublishedPosts() {
+      if (!publishedPosts) publishedPosts = BytePlayBlog.request('posts').then(result => result.posts);
+      return publishedPosts;
+    }
+
     // ── Category tag class ─────────────────────────
     function catClass(cat) {
       const map = { fertilia: 'tag-fertilia', cab: 'tag-cab', announcements: 'tag-announcements', timekits: 'tag-timekits' };
@@ -421,18 +430,20 @@
       return blocks.map(block => {
         switch (block.type) {
           case 'h2':
-            return `<h2>${block.text}</h2>`;
+            return `<h2>${escapeText(block.text)}</h2>`;
+          case 'html':
+            return block.html;
           case 'p':
             return `<p>${block.html}</p>`;
           case 'img':
-            return `<img src="${block.src}" alt="" loading="lazy">`;
+            return `<img src="${escapeText(block.src)}" alt="${escapeText(block.alt || '')}" loading="lazy">`;
           case 'fixed':
             const items = block.items.map(i => `<li>${i}</li>`).join('');
             return `<ul class="fixed-list">${items}</ul>`;
           case 'signoff':
-            return `<div class="post-signoff">~ ${block.text}</div>`;
+            return `<div class="post-signoff">~ ${escapeText(block.text)}</div>`;
           case 'button':
-            return `<a href="${block.href}" class="post-btn-link" target="_blank" rel="noopener">${block.text}</a>`;
+            return `<a href="${escapeText(block.href)}" class="post-btn-link" target="_blank" rel="noopener">${escapeText(block.text)}</a>`;
           default:
             return '';
         }
@@ -440,7 +451,7 @@
     }
 
     async function loadRelatedPosts(current, base) {
-      const results = await Promise.all(POST_REGISTRY.filter(id => id !== current.id).map(async id => {
+      const results = BytePlayBlog.enabled ? await getPublishedPosts().catch(() => []) : await Promise.all(POST_REGISTRY.filter(id => id !== current.id).map(async id => {
         try {
           const response = await fetch(new URL('posts/' + id + '.json', base));
           return response.ok ? await response.json() : null;
@@ -468,7 +479,7 @@
         const category = document.createElement('span');
         category.textContent = catLabel(post.category);
         const title = document.createElement('h3'); title.textContent = post.title;
-        const date = document.createElement('span'); date.textContent = post.date;
+        const date = document.createElement('span'); date.textContent = BytePlayBlog.date(post.date);
         copy.append(category, title, date); link.appendChild(copy); container.appendChild(link);
       });
     }
@@ -478,13 +489,20 @@
       // Derive base URL from post.html's own location so it works whether the
       // site is at the domain root or inside a subdirectory.
       const base = new URL('./', window.location.href).href;
-      const jsonURL = base + 'posts/' + id + '.json';
-      console.log('[BYTE Blog] Fetching:', jsonURL);
+      const jsonURL = base + 'posts/' + encodeURIComponent(id) + '.json';
+
 
       try {
-        const res = await fetch(jsonURL);
-        if (!res.ok) throw new Error('HTTP ' + res.status + ' — ' + jsonURL);
-        const post = await res.json();
+        let post;
+        if (BytePlayBlog.enabled) {
+          post = await BytePlayBlog.request('posts/' + encodeURIComponent(id));
+          const registry = await getPublishedPosts();
+          POST_REGISTRY.splice(0, POST_REGISTRY.length, ...registry.map(post => post.id));
+        } else {
+          const res = await fetch(jsonURL);
+          if (!res.ok) throw new Error('Post not found.');
+          post = await res.json();
+        }
 
         // Update page metadata
         document.getElementById('page-title').textContent = `${post.title} — BYTE Play`;
@@ -496,11 +514,11 @@
         document.getElementById('post-hero').innerHTML = `
           <a href="developer-blog" class="post-hero-back">Back to Blog</a>
           <div class="post-hero-meta">
-            <span class="post-cat-tag ${catClass(post.category)}">${catLabel(post.category)}</span>
-            <span class="post-hero-date">${post.date}</span>
+            <span class="post-cat-tag ${catClass(post.category)}">${escapeText(catLabel(post.category))}</span>
+            <span class="post-hero-date">${escapeText(BytePlayBlog.date(post.date))}</span>
           </div>
-          <h1>${post.title}</h1>
-          <div class="post-hero-author">By ${post.author || 'BYTE Play Devs'}</div>
+          <h1>${escapeText(post.title)}</h1>
+          <div class="post-hero-author">By ${escapeText(post.author || 'BYTE Play Devs')}</div>
         `;
 
         // Render body
@@ -515,7 +533,7 @@
           toc.appendChild(link);
         });
         if (!headings.length) document.querySelector('.article-outline h2').textContent = 'From the studio';
-        loadRelatedPosts(post, base);
+        loadRelatedPosts(post, base).catch(() => {});
 
 
         // Render prev/next nav + return button

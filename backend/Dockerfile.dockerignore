@@ -1,10 +1,9 @@
-fly.toml
 .git
-.github
-backend
 .venv
 .pytest_cache
 .env
 **/.env
 **/__pycache__
+backend/data
+backend/tests
 *.sqlite3*

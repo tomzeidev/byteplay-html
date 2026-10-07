@@ -92,3 +92,20 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 motionPreference.addEventListener('change', updateScene);
 updateScene();
+
+// Show the newest managed stories after the CMS is connected.
+if (window.BytePlayBlog?.enabled) {
+  const notes = document.querySelector('.studio-notes');
+  notes.querySelectorAll('.note-row').forEach(row => row.remove());
+  BytePlayBlog.request('posts').then(({posts}) => {
+    posts.slice(0, 2).forEach(post => {
+      const row = document.createElement('a'); row.className = 'note-row'; row.href = 'post.html?id=' + encodeURIComponent(post.id);
+      const category = document.createElement('span'); category.className = 'note-type'; category.textContent = post.category.toUpperCase() + ' / STUDIO NOTE';
+      const title = document.createElement('h3'); title.textContent = post.title;
+      const arrow = document.createElement('span'); arrow.className = 'note-arrow'; arrow.textContent = '→';
+      row.append(category, title, arrow); notes.appendChild(row);
+    });
+  }).catch(() => {
+    const message = document.createElement('p'); message.textContent = 'Studio notes are temporarily unavailable. Please check back soon.'; notes.appendChild(message);
+  });
+}

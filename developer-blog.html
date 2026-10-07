@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+  <script src="cms-config.js"></script>
+  <script src="blog-api.js"></script>
   <style>
     /* ── Blog page overrides ─────────────────────── */
     body { background: #fff; color: #1a1a1a; }
@@ -665,14 +667,49 @@
       document.getElementById('footer-placeholder').innerHTML = html;
     });
 
+    async function initializeBlog() {
     // ── Category filter ──────────────────────────
     const buttons = document.querySelectorAll('.filter-btn');
-    const posts   = document.querySelectorAll('.post[data-cat]');
+    let posts = document.querySelectorAll('.post[data-cat]');
     const groups  = document.querySelectorAll('.post-group[data-group]');
     const empty   = document.getElementById('posts-empty');
 
+    if (BytePlayBlog.enabled) {
+      groups.forEach(group => group.querySelectorAll('.post').forEach(post => post.remove()));
+      try {
+        const result = await BytePlayBlog.request('posts');
+        result.posts.forEach(post => {
+          const group = Array.from(groups).find(group => group.dataset.group === post.category);
+          if (!group) return;
+          const card = document.createElement('div');
+          card.className = 'post'; card.dataset.cat = post.category; card.dataset.date = post.date;
+          if (post.thumb) {
+            const image = document.createElement('img'); image.className = 'post-thumb';
+            image.src = post.thumb; image.alt = ''; image.loading = 'lazy'; card.appendChild(image);
+          }
+          const content = document.createElement('div'); content.className = 'post-content';
+          const meta = document.createElement('div'); meta.className = 'post-meta';
+          const tag = document.createElement('span'); tag.className = 'post-cat-tag tag-' + post.category;
+          tag.textContent = {fertilia:'Fertilia',cab:'Collect All Blocks',timekits:'TimeKits',announcements:'Announcement'}[post.category];
+          const date = document.createElement('span'); date.className = 'post-date'; date.textContent = BytePlayBlog.date(post.date);
+          meta.append(tag, date);
+          const title = document.createElement('h2'); title.textContent = post.title;
+          const excerpt = document.createElement('p'); excerpt.className = 'excerpt'; excerpt.textContent = post.excerpt;
+          const link = document.createElement('a'); link.className = 'read-more'; link.href = 'post.html?id=' + encodeURIComponent(post.id); link.textContent = 'Read More →';
+          content.append(meta, title, excerpt, link); card.appendChild(content); group.appendChild(card);
+        });
+        posts = document.querySelectorAll('.post[data-cat]');
+      } catch (error) {
+        groups.forEach(group => { group.style.display = 'none'; });
+        empty.querySelector('p').textContent = error.message;
+        empty.style.display = 'block';
+        buttons.forEach(button => { button.disabled = true; });
+        return;
+      }
+    }
+
     // Pre-count per category
-    const counts = { all: 0 };
+    const counts = { all: 0, fertilia: 0, cab: 0, timekits: 0, announcements: 0 };
     posts.forEach(p => {
       const cat = p.dataset.cat;
       counts[cat] = (counts[cat] || 0) + 1;
@@ -747,6 +784,8 @@
         applyFilter(btn.dataset.cat);
       });
     });
+    }
+    initializeBlog();
   </script>
 
 </body>

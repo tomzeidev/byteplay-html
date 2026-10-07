@@ -1341,3 +1341,4 @@ html { scroll-behavior: smooth; scroll-padding-top: 100px; }
   .ticker-toggle { display: none; }
   .studio-game:hover { translate: none; }
 }
+[hidden] { display: none !important; }
