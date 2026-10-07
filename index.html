@@ -1,25 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta property="og:title" content="BYTE Play">
-  <meta property="og:description" content="At BytePlay, we're striving to be more than just a studio—we're builders of bite-sized and expansive Minecraft Servers alike. Our newest server, Fertilia is OUT NOW!">
-  <meta property="og:image" content="/img/og-banner.png">
-  <meta property="og:url" content="https://byteplay.xyz">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BYTE Play</title>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BytePlay — Small studio. Big worlds.</title>
+<meta name="description" content="Minecraft worlds with a little more imagination. Discover Fertilia, TimeKits, and the games from BytePlay.">
+<meta property="og:title" content="BytePlay — Small studio. Big worlds."><meta property="og:image" content="our-worlds.png">
+<link rel="icon" href="/img/favicon.ico"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="studio-home">
+<a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- HEADER -->
   <header class="main-header">
-    <div class="logo">
-      <img src="nova-logo.png" alt="BYTE Play Logo">
-    </div>
+    <a class="byte-brand" href="index" aria-label="BytePlay home"><span class="byte-mark" aria-hidden="true">b<span>▸</span></span><span>byte<span class="brand-play">play</span></span></a>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
@@ -28,189 +20,28 @@
         <li><a href="index" class="active">Home</a></li>
         <li><a href="servers">Servers</a></li>
         <li><a href="developer-blog">Posts</a></li>
-        <li><a href="baltop">DB</a></li>
+        <li><a href="baltop">Leaderboard</a></li>
         <li><a href="https://byteplay.tebex.io">Shop</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero-banner">
-    <div class="hero-bg"></div>
-    <div class="hero-grid"></div>
-    <div class="hero-fade"></div>
-    <div class="hero-inner reveal">
-      <div class="hero-eyebrow">
-        <span class="hero-eyebrow-dot"></span> Out Now
-      </div>
-      <h1 class="hero-title">
-        Welcome to<br>
-        <span class="hero-title-accent">Fertilia</span>
-      </h1>
-      <p class="hero-sub">
-        Farm crops, plant seeds, fight bosses and more.<br>
-        A progression RPG built inside Minecraft.
-      </p>
-      <div class="countdown-wrap reveal reveal-delay-1">
-        <span class="hero-eyebrow-dot" style="width:8px;height:8px;margin-right:6px;flex-shrink:0;"></span>
-        <span>Fertilia is <strong>live now!</strong></span>
-      </div>
-      <br>
-      <div class="ip-block reveal reveal-delay-2">
-        <div class="ip-text">fertilia.byteplay.xyz</div>
-        <button onclick="copyIP()">Copy IP</button>
-      </div>
-      <p class="copy-feedback" id="copy-feedback"></p>
-    </div>
-  </section>
 
-  <!-- WORLDS STRIP -->
-  <section class="worlds-strip reveal">
-    <div class="worlds-strip-bg"></div>
-    <div class="worlds-strip-overlay"></div>
-    <div class="worlds-inner">
-      <h2>Explore Our Worlds</h2>
-      <p>Every corner of our maps is built with purpose. Discover unique features, hidden secrets, and hand-crafted environments across all our servers.</p>
-    </div>
-  </section>
-
-  <!-- JOIN US PROMO BANNER -->
-  <a href="join-us" class="promo-banner reveal">
-    <div class="promo-banner-inner">
-      <div class="promo-banner-left">
-        <span class="promo-banner-eyebrow">We're hiring</span>
-        <span class="promo-banner-title">Join the BYTE Play team</span>
-        <span class="promo-banner-sub">Developers, builders, mods - paid roles available!</span>
-      </div>
-      <div class="promo-banner-cta">
-        See open roles
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </div>
-    </div>
-  </a>
-
-  <!-- PROJECTS -->
-  <section class="projects-section">
-    <!--<span class="section-label reveal">Our Work</span>-->
-    <h2 class="section-title reveal">Projects</h2>
-    <p class="section-sub reveal">Hand-crafted servers with a unique spin on the classics.</p>
-
-    <div class="projects-grid">
-      <div class="project-card reveal reveal-delay-1">
-        <div class="project-img-wrap" style="background: linear-gradient(135deg, #1a1a2e, #2d2b55);">
-          <img src="creative.png" alt="Collect All Blocks">
-        </div>
-        <div class="project-body">
-          <span class="project-badge badge-archived">Archived</span>
-          <h3>Collect All Blocks!</h3>
-          <p>Over 100+ rare blocks to collect in this unique box gamemode. Drop chances range from 50% down to 0.05%.</p>
-          <div class="project-tagline">Can you collect them all?</div>
-        </div>
-      </div>
-
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-img-wrap" style="background: linear-gradient(135deg, #0f2b1a, #1a4a2a);">
-          <img src="full%20sized%20hoe.png" alt="Fertilia">
-        </div>
-        <div class="project-body">
-          <span class="project-badge badge-live">Live Now</span>
-          <h3>Fertilia</h3>
-          <p>Increase your Farm Level, rebirth to unlock better crops, and grind the Travelling Merchant for powerful boosters.</p>
-          <div class="project-tagline">Today is your lucky day?</div>
-        </div>
-      </div>
-
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-img-wrap" style="background: linear-gradient(135deg, #2b1a0f, #4a2e1a);">
-          <img src="timekits.png" alt="TimeKits">
-        </div>
-        <div class="project-body">
-          <span class="project-badge badge-dev">In Development</span>
-          <h3>TimeKits</h3>
-          <p>A RandomKits PvP server with a timed twist. Jump into the pit, kill enemies, and keep the clock alive.</p>
-          <div class="project-tagline">How long will you last?</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- STATS -->
-  <section class="stats-section-new">
-    <span class="section-label reveal">By the Numbers</span>
-    <h2 class="section-title reveal">The Community</h2>
-    <p class="section-sub reveal">Growing every week.</p>
-    <div class="stats-grid-new">
-      <div class="stat-card reveal reveal-delay-1">
-        <span class="stat-icon">👥</span>
-        <span class="stat-number">14,500+</span>
-        <span class="stat-label">Unique Joins</span>
-        <span class="stat-note">That's a small stadium!</span>
-      </div>
-      <div class="stat-card reveal reveal-delay-2">
-        <span class="stat-icon">⚡</span>
-        <span class="stat-number">24</span>
-        <span class="stat-label">Peak CCU — Fertilia</span>
-        <span class="stat-note">All-time best concurrent</span>
-      </div>
-      <div class="stat-card reveal reveal-delay-3">
-        <span class="stat-icon">⭐</span>
-        <span class="stat-number">304</span>
-        <span class="stat-label">Minehut Favourites</span>
-        <span class="stat-note">27,300 total visits</span>
-      </div>
-      <div class="stat-card reveal reveal-delay-1">
-        <span class="stat-icon">🎮</span>
-        <span class="stat-number">15</span>
-        <span class="stat-label">Peak CCU — Collect All Blocks</span>
-        <span class="stat-note">Archived server</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SHOP CTA -->
-  <section class="shop-cta">
-    <div class="shop-cta-inner">
-      <span class="section-label reveal">Support Us</span>
-      <h2 class="reveal">The BYTE Store</h2>
-      <p class="reveal">
-        Grab boosters, XP perks and prestige upgrades.<br>
-        Our games stay free-to-play — the store just keeps the lights on.
-      </p>
-      <a href="https://byteplay.tebex.io" class="cta-button reveal">Visit the Store</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <div id="footer-placeholder"></div>
-
-  <script>
-    // Hamburger
-    document.getElementById('hamburger').addEventListener('click', function () {
-      this.classList.toggle('open');
-      document.getElementById('main-nav').classList.toggle('open');
-    });
-
-    // Copy IP
-    function copyIP() {
-      navigator.clipboard.writeText('fertilia.byteplay.xyz').then(() => {
-        const fb = document.getElementById('copy-feedback');
-        fb.textContent = '✓ Copied to clipboard!';
-        setTimeout(() => { fb.textContent = ''; }, 2500);
-      });
-    }
-    
-    // Scroll reveal
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
-      { threshold: 0.12 }
-    );
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-    // Footer
-    fetch('footer.html').then(r => r.text()).then(html => {
-      document.getElementById('footer-placeholder').innerHTML = html;
-    });
-  </script>
-
-</body>
-</html>
+<main id="main">
+<section class="studio-intro wrap">
+<div class="intro-top"><span class="eyebrow"><i></i> INDEPENDENT MINECRAFT STUDIO</span><span class="intro-note">Made for the way you play.</span></div>
+<h1>Small studio.<br>Big <span class="world-word">worlds<svg viewBox="0 0 540 24" aria-hidden="true"><path d="M4 17 Q250 -4 532 12"/></svg></span><span class="lime-period">.</span></h1>
+<div class="intro-bottom"><p>We turn little ideas into places you’ll want to stay.<br>Original Minecraft games. Built with a little more imagination.</p><a class="text-link" href="#games">Find your next adventure <span><svg class="studio-arrow arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div>
+</section>
+<section class="featured-world wrap" aria-labelledby="fertilia-title">
+<div class="featured-art"><span class="live-tag"><i></i> LIVE NOW</span><span class="image-caption">YOUR NEXT CHAPTER STARTS HERE.</span></div>
+<div class="featured-copy"><div class="feature-meta"><span>01 / THE FEATURED WORLD</span><span>JAVA EDITION</span></div><div><h2 id="fertilia-title">Fertilia<span><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></h2><p>A little farming.<br>A lot of adventure.</p><p class="feature-description">Plant your first seed. Find your next upgrade. Take on bosses and build your own path in our Minecraft progression RPG.</p></div><div class="feature-actions"><button class="studio-button" id="copy-ip" type="button">Copy server IP <span aria-hidden="true"><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></button><a href="servers" class="feature-more">Explore the world →</a></div><span class="server-address">fertilia.byteplay.xyz</span><p id="copy-feedback" role="status" aria-live="polite"></p></div>
+</section>
+<div class="studio-ticker" aria-label="Build. Explore. Play. Repeat."><span>BUILD <b>✳</b> EXPLORE <b>✳</b> PLAY <b>✳</b> REPEAT <b>✳</b> BUILD <b>✳</b> EXPLORE <b>✳</b> PLAY <b>✳</b> REPEAT <b>✳</b></span></div>
+<section class="game-section wrap" id="games"><div class="section-heading"><div><span class="eyebrow">THE BYTEPLAY UNIVERSE</span><h2>Different worlds.<br>Same spark.</h2></div><a class="text-link" href="servers">All our games <span><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div>
+<div class="studio-games"><a href="servers" class="studio-game"><div class="game-art cab-art"><img src="creative.png" alt="Collect All Blocks Minecraft world" loading="lazy"><span class="game-status">ARCHIVED</span><span class="game-arrow"><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></div><div class="game-info"><h3>Collect All Blocks!</h3><span>01</span></div><p>One world. Over 100 rare blocks. A collecting obsession.</p></a><a href="servers" class="studio-game"><div class="game-art time-art"><img src="timekits.png" alt="TimeKits game artwork" loading="lazy"><span class="game-status">IN DEVELOPMENT</span><span class="game-arrow"><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></div><div class="game-info"><h3>TimeKits</h3><span>02</span></div><p>A PvP twist where every second counts. Keep the clock alive.</p></a></div>
+</section>
+<section class="community-band"><div class="wrap community-inner"><div><span class="eyebrow">GOOD GAMES. GREAT PEOPLE.</span><h2>A world is better<br>with you in it.</h2><a class="studio-button" href="https://discord.gg/a9eG98AweD" target="_blank" rel="noopener noreferrer">Find us on Discord <span><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div><div class="community-numbers"><div><strong>14,500<span>+</span></strong><p>Unique players. Countless stories.</p></div><div><strong>304</strong><p>Minehut favourites. And counting.</p></div></div></div></section>
+<section class="studio-notes wrap"><div class="section-heading"><div><span class="eyebrow">BEHIND THE BLOCKS</span><h2>Always building.</h2></div><a class="text-link" href="developer-blog">From the studio <span><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></div><a class="note-row" href="post?id=fertilia-update-10"><span class="note-type">FERTILIA / UPDATE</span><h3>The next chapter of Fertilia</h3><span class="note-arrow"><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a><a class="note-row" href="post?id=timekits-announcement"><span class="note-type">TIMEKITS / ANNOUNCEMENT</span><h3>A new way to play against the clock</h3><span class="note-arrow"><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a></section>
+<section class="studio-hiring wrap"><span class="eyebrow">MAKE SOMETHING THAT MATTERS.</span><h2>Your next build<br>could be with us.</h2><a href="join-us" class="studio-button">Meet your next team <span><svg class="studio-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14"/></svg></span></a><svg class="hiring-spark" viewBox="0 0 100 100" aria-hidden="true"><path d="M50 5v90M5 50h90M18 18l64 64M18 82l64-64" stroke="currentColor" stroke-width="12"/></svg></section>
+</main><div id="footer-placeholder"></div><script src="studio.js" defer></script></body></html>
